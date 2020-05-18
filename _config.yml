@@ -16,11 +16,11 @@
 title: ThingCo LT Data Documentation
 email: support@thingco.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Data documentation for the solar powered little theo device
+  Data documentation for the solar powered Little Theo device
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "thingco.github.io" 
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username: thingco_
+github_username:  thingco
 
 # Build settings
 markdown: kramdown
