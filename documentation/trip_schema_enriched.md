@@ -46,18 +46,18 @@ type Event {
 
 ```
 {
-  TripID: "a7dc4b3b-b4d4-3b88-badb-4017fedb1836"
-  TripDistance: 28.5
-  TripDuration: 46.44
-  TripEventCount: 6
-  TripIsPerfect: false
-  TripStartTimestamp: "1589636527000"
-  TripStartPlacename: "Warkworth"
+  TripID: "a7dc4b3b-b4d4-3b88-badb-4017fedb1836",
+  TripDistance: 28.5,
+  TripDuration: 46.44,
+  TripEventCount: 6,
+  TripIsPerfect: false,
+  TripStartTimestamp: "1589636527000",
+  TripStartPlacename: "Warkworth",
   TripStartLocation: {
     Lng: -1.63081837,
     Lat: 55.02681351
   },
-  TripEndPlacename: "Newcastle upon Tyne"
+  TripEndPlacename: "Newcastle upon Tyne",
   TripEndLocation: {
     Lng: -1.6118183135986328,
     Lat: 55.34747314453125

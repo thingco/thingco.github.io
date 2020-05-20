@@ -39,6 +39,8 @@ type Alert Detailed Data - 500 points at 50Hz[{
 
 <h3>Raw data collected from devices sensors</h3>
 
+<img src="/img/rawalert.png"/>
+
 ```
 {% for row in site.data.rawcrashsensordata %}
 {{ row }}

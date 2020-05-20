@@ -30,6 +30,10 @@ type Scores {
 ```
 
 <h2>Sample data</h2>
+
+<img src="/img/app4.png" class="app" />
+<img src="/img/app5.png" class="app" />
+
 ```
 {
 	PersonID:      "67e2f9dc-3e75-4478-974b-79a919b308d1"
