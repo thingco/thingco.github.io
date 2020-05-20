@@ -6,3 +6,7 @@ img.app {
     width: 30%;
     display: inline-block;
 }
+
+img.logo {
+    width: 150px;
+}

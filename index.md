@@ -5,7 +5,7 @@
 layout: home
 ---
 
-<h1>Contents</h1>
+<h1>Little Theo Data Documentation</h1>
 
 All data is accessible via a GRAPHQL endpoint. 
 
