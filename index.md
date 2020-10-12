@@ -27,3 +27,8 @@ All data is accessible via a GRAPHQL endpoint.
 <ul>
     <li><a href="/person.html">Person data</a></li>
 </ul>
+
+<h2>Platform</h2>
+<ul>
+    <li><a href="/platform.html">Platform info</a></li>
+</ul>
