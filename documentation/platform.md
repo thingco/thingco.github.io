@@ -13,7 +13,7 @@ The ARN of a Topic is contructed as follows `arn:aws:sns:${AWS::Region}:${AWS::A
 
 ### Stack Details
 
-To ensure data segregation ThingCo deploy each partners stack in a seperate AWS account and maintian a strict POLP model for accessing data. Details of the Freedom installation are as follows.
+To ensure data segregation ThingCo deploy each partners stack in a seperate AWS account and maintian a strict POLP model for accessing data. Details of the installation are as follows.
 
 ##### AccountId: 000000000000
 ##### Region: eu-west-1
