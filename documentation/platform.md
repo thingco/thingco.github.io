@@ -15,13 +15,13 @@ The ARN of a Topic is contructed as follows `arn:aws:sns:${AWS::Region}:${AWS::A
 
 To ensure data segregation ThingCo deploy each partners stack in a seperate AWS account and maintian a strict POLP model for accessing data. Details of the Freedom installation are as follows.
 
-##### AccountId: 453340648180
+##### AccountId: 000000000000
 ##### Region: eu-west-1
 
 ### Battery Data
 A devices charge level at the end of a trip.
 
-**Topic Name:** Production-policywise-BatteryDataTopic-Topic-1Q1MSZTCRC259
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-BatteryDataTopic-Topic-${UID}
 
 ```json
 {
@@ -52,7 +52,7 @@ A devices charge level at the end of a trip.
 ### Block Distance Complete
 The user has completed a block ~100 miles, and it is now ready to be scored. A block is made up of a minumium of 100 miles and will be scored as soon as the last trip in the block is completed. This means that if the user has driven 95 miles in there first block, then dirves a 15 mile trip the final block total will be 110 miles. This is to avoid the trip appearing in multiple blocks.
 
-**Topic Name:** Production-policywise-BlockDistanceCompleteTopic-Topic-1M3FVUFA38BMR
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-BlockDistanceCompleteTopic-Topic-${UID}
 
 ```json
 {
@@ -70,7 +70,7 @@ The user has completed a block ~100 miles, and it is now ready to be scored. A b
 ### Block Score Complete
 Published to once the latest completed block has been scored.
 
-**Topic Name:** Production-policywise-BlockScoreCompleteTopic-Topic-1RSF8DYLXV9GV
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-BlockScoreCompleteTopic-Topic-${UID}
 
 ```json
 {
@@ -83,6 +83,40 @@ Published to once the latest completed block has been scored.
     "ErraticDriving": 99,
     "Speeding": 99,
     "TimeOfDay": 99
+  },
+  "eventDetails": {
+    "durationEvents": 0.0,
+    "erraticEvents": {
+      "braking1": 56,
+      "braking2": 2,
+      "speedingUp1": 241,
+      "speedingUp2": 4
+    },
+    "speedingEvents": {
+      "persistent": 32.0,
+      "newSegment": 29.0
+    },
+    "timeOfDayEvents": {
+      "weekdayUnderSpeed": [
+        {
+          "count": 245.0,
+          "from": 0.0,
+          "to": 3.0
+        },
+        {
+          "count": 2495.0,
+          "from": 12.0,
+          "to": 14.0
+        }
+      ],
+      "weekdayOverSpeed": [
+        {
+          "count": 663.0,
+          "from": 0.0,
+          "to": 3.0
+        }
+      ]
+    }
   },
   "metadata": "BLOCK#COMPLETE#2006-02-01@15:04:05#VALID-BLOCK-ID-1",
   "personID": "VALID-PERSON-ID-1",
@@ -101,7 +135,7 @@ Published to once the latest completed block has been scored.
 ### Device Connected
 When the device completes a trip by having been stationary for 10 minuets. It connects to the platform and sends a message before the remaining trip data.
 
-**Topic Name:** Production-policywise-DeviceConnectedTopic-Topic-M8DJQC0E7OLL
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceConnectedTopic-Topic-${UID}
 
 ```json
 {
@@ -118,7 +152,7 @@ When the device completes a trip by having been stationary for 10 minuets. It co
 ### Device Disconnected
 The device has finished sending trip data and is switching to sleep mode.
 
-**Topic Name:** Production-policywise-DeviceDisconnectedTopic-Topic-8H78UMCCXQN2
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceDisconnectedTopic-Topic-${UID}
 
 ```json
 {
@@ -135,7 +169,7 @@ The device has finished sending trip data and is switching to sleep mode.
 ### Device Installed
 The customer has installed their device.
 
-**Topic Name:** Production-policywise-DeviceInstallationTopic-Topic-5UAAT9U0P0NS
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceInstallationTopic-Topic-${UID}
 
 ```json
 {
@@ -149,7 +183,7 @@ The customer has not responded to the 7 day chasers, that the device is offline.
 
 Types: `LOW_BATTERY`, `NO_INSTALL`, `TAMPER`
 
-**Topic Name:** Production-policywise-DeviceOfflineCanxTopic-Topic-W5J4GDSHJZT3
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceOfflineCanxTopic-Topic-${UID}
 
 ```json
 {
@@ -162,7 +196,7 @@ Types: `LOW_BATTERY`, `NO_INSTALL`, `TAMPER`
 ### Device Returned
 ThingCo has received the customers device and wether it can be re-used.
 
-**Topic Name:** Production-policywise-DeviceReturnedTopic-Topic-OTRMBHX1Q3R4
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceReturnedTopic-Topic-${UID}
 
 ```json
 {
@@ -175,7 +209,7 @@ ThingCo has received the customers device and wether it can be re-used.
 ### Excessive Speeding
 The customer has exceeded the excessive speeding criteria. 48hrs after the inital event, the cancel field will be marked as true.
 
-**Topic Name:** Production-policywise-ExcessiveSpeedingTopic-Topic-SL6UI5H8HGCY
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-ExcessiveSpeedingTopic-Topic-${UID}
 
 ```json
 {
@@ -194,7 +228,7 @@ The customer has exceeded the excessive speeding criteria. 48hrs after the inita
 ### Matched Points
 Trip points post ThingCo enrichment.
 
-**Topic Name:** Production-policywise-MatchedPointsTopic-Topic-YIPGEKFG9OH3
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-MatchedPointsTopic-Topic-${UID}
 
 ```json
 {
@@ -247,7 +281,7 @@ Trip points post ThingCo enrichment.
 ### Persistent Speeding
 The customer has not improved their persistent speeding pattern over a number of blocks and should be cancelled.
 
-**Topic Name:** Production-policywise-PersistentSpeedingTopic-Topic-1DM9WC2BMNCL5
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-PersistentSpeedingTopic-Topic-${UID}
 
 ```json
 {
@@ -257,10 +291,31 @@ The customer has not improved their persistent speeding pattern over a number of
 }
 ```
 
+### Persistent Speeding Events
+The customer has been speeding persistently over the course of a trip
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-PersistentSpeedingEventsTopic-Topic-${UID}
+
+```json
+{
+  "boxID": "VALID-DEVICE-1",
+  "personID": "VALID-PERSON-ID-1",
+  "tripID": "VALID-TRIP-ID",
+  "blockID": "VALID-BLOCK-ID",
+  "events": [
+    {
+      "location": [-4.18974, 51.01756],
+      "placename": "A1",
+      "timestamp": "1597088197000"
+    }
+  ]
+}
+```
+
 ### Standard Points
 Trip points after basic validation.
 
-**Topic Name:** Production-policywise-StandardPointsTopic-Topic-RXPQNF0CXJNN
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-StandardPointsTopic-Topic-${UID}
 
 ```json
 {
@@ -312,7 +367,7 @@ Trip points after basic validation.
 ### Standardised Accident
 Intial alert summary message sent as soon as the device detects an impact.
 
-**Topic Name:** Production-policywise-StandardisedAccidentTopic-Topic-SQ37CIUOMIL6
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-StandardisedAccidentTopic-Topic-${UID}
 
 ```json
 {
@@ -331,7 +386,7 @@ Intial alert summary message sent as soon as the device detects an impact.
 ### Standardised Sensor
 The sensor data relating to an alert summary. This sent after the summary to ensure the first message is received in low signal scenarios.
 
-**Topic Name:** Production-policywise-StandardisedSensorTopic-Topic-13WK5CDGSG0VH
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-StandardisedSensorTopic-Topic-${UID}
 
 ```json
 {
@@ -356,7 +411,7 @@ The sensor data relating to an alert summary. This sent after the summary to ens
 ### Tamper
 The device has sent a tamper notification.
 
-**Topic Name:** Production-policywise-TamperTopic-Topic-XIW9CF14VTHV
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-TamperTopic-Topic-${UID}
 
 ```json
 {
@@ -368,7 +423,7 @@ The device has sent a tamper notification.
 ### Trip Complete
 The device has complted a trip and all data has been receieved.
 
-**Topic Name:** Production-policywise-TripCompleteTopic-Topic-1RW3N6CRAA9DL
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripCompleteTopic-Topic-${UID}
 
 ```json
 {
@@ -392,7 +447,7 @@ The device has complted a trip and all data has been receieved.
 ### Trip Events Processed
 The latest trip has been checked for all event types
 
-**Topic Name:** Production-policywise-TripEventsProcessedTopic-Topic-1F5EUH6Y0N6U
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripEventsProcessedTopic-Topic-${UID}
 
 ```json
 {
