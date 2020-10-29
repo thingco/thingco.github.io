@@ -287,7 +287,8 @@ The customer has not improved their persistent speeding pattern over a number of
 {
   "boxID": "VALID-DEVICE-1",
   "personID": "VALID-PERSON-ID-1",
-  "timestamp": "1597088197000"
+  "timestamp": "1597088197000",
+  "cancel": true // false - 9 blocks | true - 12 blocks
 }
 ```
 
