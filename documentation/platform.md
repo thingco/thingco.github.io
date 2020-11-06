@@ -454,7 +454,7 @@ The latest trip has been checked for all event types
   "PersonID": "VALID-PERSON-ID-1",
   "TripID": "VALID-TRIP-ID-1",
   "Distance": 10.1,
-  "Duration" 60,
+  "Duration": 60,
   "BlockID": "VALID-BLOCK-ID-1",
   "Count": 1,
   "IsPerfect": true,
