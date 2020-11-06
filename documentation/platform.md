@@ -451,15 +451,17 @@ The latest trip has been checked for all event types
 
 ```json
 {
-  "personID": "VALID-PERSON-ID-1",
-  "tripID": "VALID-TRIP-ID-1",
-  "blockID": "VALID-BLOCK-ID-1",
-  "count": 1,
-  "isPerfect": true,
-  "events": [
+  "PersonID": "VALID-PERSON-ID-1",
+  "TripID": "VALID-TRIP-ID-1",
+  "Distance": 10.1,
+  "Duration" 60,
+  "BlockID": "VALID-BLOCK-ID-1",
+  "Count": 1,
+  "IsPerfect": true,
+  "Events": [
     {
-      "event": "SPEEDING",
-      "count": 1
+      "Event": "SPEEDING",
+      "Count": 1
     }
   ]
 }
