@@ -18,6 +18,18 @@ To ensure data segregation ThingCo deploy each partners stack in a seperate AWS 
 ##### AccountId: 000000000000
 ##### Region: eu-west-1
 
+### App Open
+Posted to each time a user opens the mobile App
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-AppOpenTopic-Topic-${UID}
+
+```json
+{
+  "personID": "VALID-PERSON-ID-1",
+  "timestamp": "1605889095"
+}
+```
+
 ### Battery Data
 A devices charge level at the end of a trip.
 
