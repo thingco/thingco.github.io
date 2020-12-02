@@ -454,8 +454,8 @@ The latest trip has been checked for all event types
   "Distance": 10.1,
   "Duration": 60,
   "StartLocation":{
-    "LON":-1.500000,
-    "LAT":55.000000
+    "LON": -1.500000,
+    "LAT": 55.000000
   },
   "StartPlacename": "Newcastle",
   "StartTimestamp": "1234567890123",
