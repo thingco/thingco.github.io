@@ -432,13 +432,13 @@ The device has complted a trip and all data has been receieved.
 
 ```json
 {
-  "tripID": "VALID-TRIP-ID-1",
+  "id": "VALID-TRIP-ID-1",
   "boxID": "VALID-DEVICE-ID-1",
   "blockID":"VALID-BLOCK_ID-1",
   "personID": "VALID-PERSON-ID-1",
   "startTimestamp": "1606928671000",
   "endTimestamp": "1606935465000",
-  "endPlacename": "Newcastle upon Tyne",
+  "endPlacename": "Newcastle upon Tyne"
 }
 ```
 
