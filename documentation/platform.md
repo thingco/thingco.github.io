@@ -457,13 +457,13 @@ The latest trip has been checked for all event types
     "LON":-1.500000,
     "LAT":55.000000
   },
-  "StartPlacename:"Newcastle",
+  "StartPlacename": "Newcastle",
   "StartTimestamp": "1234567890123",
-  "EndLocation":{
-    "LON":-1.500000,
-    "LAT":55.000000
+  "EndLocation": {
+    "LON": -1.500000,
+    "LAT": 55.000000
   },
-  "EndPlacename:"Newcastle",
+  "EndPlacename": "Newcastle",
   "EndTimestamp": "1234567890123",
   "BlockID": "VALID-BLOCK-ID-1",
   "Count": 1,
