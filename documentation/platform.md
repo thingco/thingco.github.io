@@ -37,27 +37,19 @@ A devices charge level at the end of a trip.
 
 ```json
 {
-  "deviceID": "VALID-DEVICE-1",
-  "personID": "VALID-PERSON-ID-1",
-  "tripID": "VALID-TRIP-ID-1",
-  "tripStart": 12031999,
-  "points": [
-    {
-      "timestamp": 123456789,
-      "batteryVoltage": 4600,
-      "batteryPercentage": 100,
-      "ax": 1.2,
-      "ay": 3.4,
-      "az": 5.6,
-      "lng": 7.8,
-      "lat": 9.1,
-      "heading": 0.9,
-      "speed": 12.3,
-      "hdop": 45.6,
-      "quality": 9,
-      "satellites": 7
-    }
-  ]
+    "battery_percent": 100,
+    "battery_voltage": 4400,
+    "box_id": "VALID-DEVICE-1",
+    "connection_type": 4,
+    "location": {
+      "lat": 55.000000,
+      "lon": -1.500000
+    },
+    "person_id": "VALID-PERSON-ID-1",
+    "timestamp": "1234567890123",
+    "trip_id": "VALID-TRIP-ID-1",
+    "trip_start": "1234567890123",
+    "version": [ "v1-0" ]
 }
 ```
 
@@ -69,7 +61,7 @@ The user has completed a block ~100 miles, and it is now ready to be scored. A b
 ```json
 {
   "blockID": "VALID-BLOCK-ID-1",
-  "createdAt": "1580931184425",
+  "createdAt": "1234567890123",
   "distance": 167452.82438520904,
   "duration": 8038,
   "metadata": "BLOCK#COMPLETE#2006-02-01@15:04:05#VALID-BLOCK-ID-1",
@@ -87,7 +79,7 @@ Published to once the latest completed block has been scored.
 ```json
 {
   "blockID": "VALID-BLOCK-ID-1",
-  "createdAt": "1580931184425",
+  "createdAt": "1234567890123",
   "distance": 167452.82438520904,
   "duration": 8038,
   "eventCounts": {
@@ -153,9 +145,9 @@ When the device completes a trip by having been stationary for 10 minuets. It co
 {
   "box_id": "VALID-DEVICE-1",
   "location": [-1.403091, 55.014623],
-  "timestamp": "1234567890012",
+  "timestamp": "1234567890123",
   "trip_id": "VALID-TRIP-ID-1",
-  "trip_start": "2109876543210",
+  "trip_start": "1234567890123",
   "version": ["1.0.0"],
   "connection_type": 1
 }
@@ -170,9 +162,9 @@ The device has finished sending trip data and is switching to sleep mode.
 {
   "box_id": "VALID-DEVICE-1",
   "location": [-1.403091, 55.014623],
-  "timestamp": "1234567890012",
+  "timestamp": "1234567890123",
   "trip_id": "VALID-TRIP-ID-1",
-  "trip_start": "2109876543210",
+  "trip_start": "1234567890123",
   "version": ["1.0.0"],
   "connection_type": 4
 }
@@ -440,20 +432,13 @@ The device has complted a trip and all data has been receieved.
 
 ```json
 {
-  "id": "VALID-TRIP-ID-1",
+  "tripID": "VALID-TRIP-ID-1",
   "boxID": "VALID-DEVICE-ID-1",
+  "blockID":"VALID-BLOCK_ID-1",
   "personID": "VALID-PERSON-ID-1",
-  "startPlacename": "Newcastle upon Tyne",
+  "startTimestamp": "1606928671000",
+  "endTimestamp": "1606935465000",
   "endPlacename": "Newcastle upon Tyne",
-  "eventCount": 0,
-  "perfect": false,
-  "durationMap": {
-    "1565242704004": 138
-  },
-  "distanceMap": {
-    "1565242704004": 20350.6107122000003
-  },
-  "anomaly": false
 }
 ```
 
@@ -468,6 +453,18 @@ The latest trip has been checked for all event types
   "TripID": "VALID-TRIP-ID-1",
   "Distance": 10.1,
   "Duration": 60,
+  "StartLocation":{
+    "LON":-1.500000,
+    "LAT":55.000000
+  },
+  "StartPlacename:"Newcastle",
+  "StartTimestamp": "1234567890123",
+  "EndLocation":{
+    "LON":-1.500000,
+    "LAT":55.000000
+  },
+  "EndPlacename:"Newcastle",
+  "EndTimestamp": "1234567890123",
   "BlockID": "VALID-BLOCK-ID-1",
   "Count": 1,
   "IsPerfect": true,
@@ -476,7 +473,7 @@ The latest trip has been checked for all event types
       "Event": "SPEEDING",
       "Count": 1
     }
-  ]
+  ],
+  "Polyline": "BASE64-ENCODED-POLYLINE",
 }
-
 ```
