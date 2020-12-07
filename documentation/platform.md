@@ -282,8 +282,24 @@ Trip points post ThingCo enrichment.
 }
 ```
 
+### NightTime Speeding
+The customer has surpassed the acceptable % of time over the limit and driving at night.
+`stage` indicates the number of campaigns (3 consecutive blocks) the customer has met the criteria for
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-NightSpeedingTopic-Topic-${UID}
+
+```json
+{
+  "personID": "VALID-PERSON-ID-1",
+  "timestamp": "1597088197000",
+  "policyNumber": "VALID-POLICY-NUMBER-1",
+  "stage": 1
+}
+```
+
 ### Persistent Speeding
 The customer has not improved their persistent speeding pattern over a number of blocks and should be cancelled.
+`cancel` flag will be set to true only after 12 blocks have met the criteria
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-PersistentSpeedingTopic-Topic-${UID}
 
@@ -292,7 +308,7 @@ The customer has not improved their persistent speeding pattern over a number of
   "boxID": "VALID-DEVICE-1",
   "personID": "VALID-PERSON-ID-1",
   "timestamp": "1597088197000",
-  "cancel": true // false - 9 blocks | true - 12 blocks
+  "cancel": true
 }
 ```
 
