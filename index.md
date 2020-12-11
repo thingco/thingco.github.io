@@ -35,5 +35,5 @@ All data is accessible via a GRAPHQL endpoint.
 
 <h2>REST APIs</h2>
 <ul>
-    <li><a href="https://app.swaggerhub.com/apis/thingco/Management_REST_API/1.0">Partner API</a></li>
+    <li><a href="https://app.swaggerhub.com/apis/thingco/Management_REST_API">Partner API</a></li>
 </ul>
