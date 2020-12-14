@@ -144,11 +144,17 @@ When the device completes a trip by having been stationary for 10 minuets. It co
 ```json
 {
   "box_id": "VALID-DEVICE-1",
-  "location": [-1.403091, 55.014623],
+  "person_id": "VALID-PERSON-1",
+  "location": {
+    "lon": -1.403091,
+    "lat": 55.014623
+   }
   "timestamp": "1234567890123",
   "trip_id": "VALID-TRIP-ID-1",
   "trip_start": "1234567890123",
   "version": ["1.0.0"],
+  "battery_percent": 95,
+  "battery_voltage": 4074,
   "connection_type": 1
 }
 ```
@@ -161,12 +167,18 @@ The device has finished sending trip data and is switching to sleep mode.
 ```json
 {
   "box_id": "VALID-DEVICE-1",
-  "location": [-1.403091, 55.014623],
+  "person_id": "VALID-PERSON-1",
+  "location": {
+    "lon": -1.403091,
+    "lat": 55.014623
+   }
   "timestamp": "1234567890123",
   "trip_id": "VALID-TRIP-ID-1",
   "trip_start": "1234567890123",
   "version": ["1.0.0"],
-  "connection_type": 4
+  "battery_percent": 95,
+  "battery_voltage": 4074,
+  "connection_type": 1
 }
 ```
 
