@@ -148,7 +148,7 @@ When the device completes a trip by having been stationary for 10 minuets. It co
   "location": {
     "lon": -1.403091,
     "lat": 55.014623
-   }
+   },
   "timestamp": "1234567890123",
   "trip_id": "VALID-TRIP-ID-1",
   "trip_start": "1234567890123",
@@ -171,7 +171,7 @@ The device has finished sending trip data and is switching to sleep mode.
   "location": {
     "lon": -1.403091,
     "lat": 55.014623
-   }
+   },
   "timestamp": "1234567890123",
   "trip_id": "VALID-TRIP-ID-1",
   "trip_start": "1234567890123",
@@ -189,8 +189,14 @@ The customer has installed their device.
 
 ```json
 {
+  "ax": -0.037109375,
+  "ay": -0.056884765625,
+  "az": -0.9645580649375916,
+  "batteryPercentage": 98,
+  "batteryVoltage": 4091,
   "boxID": "VALID-DEVICE-1",
-  "personID": "VALID-PERSON-ID-1"
+  "personID": "VALID-PERSON-1",
+  "timestamp": 1607346410
 }
 ```
 
