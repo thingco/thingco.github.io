@@ -343,7 +343,7 @@ The customer has been speeding persistently over the course of a trip
   "blockID": "VALID-BLOCK-ID",
   "events": [
     {
-      "location": [-4.18974, 51.01756],
+      "location": {"lat":51.01756, "lng":-4.18974},
       "placename": "A1",
       "timestamp": "1597088197000"
     }
