@@ -238,7 +238,7 @@ The customer has exceeded the excessive speeding criteria. 48hrs after the inita
   "boxID": "VALID-DEVICE-1",
   "personID": "VALID-PERSON-ID-1",
   "cancel": false,
-  "location":{"lat": 55.008765, "lng":-1.456833},
+  "location":{"lat": 55.008765, "lon":-1.456833},
   "timestamp": "1597088197000",
   "roadName": "Hawkeys Lane",
   "roadSpeed": 113,
