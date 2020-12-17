@@ -411,13 +411,14 @@ Intial alert summary message sent as soon as the device detects an impact.
 ```json
 {
   "accidentID": "VALID-ACCIDENT-ID-1",
+  "boxSerial": "VALID-BOX-ID-1",
   "metadata": "ACCIDENT#VALID-ACCIDENT-ID-1",
   "personID": "VALID-PERSON-ID-1",
   "timestamp": "1580405492910",
   "placename": "Newbury",
   "tripID": "VALID-TRIP-ID-1",
   "tripStartTime": "1551442483000",
-  "location": { "Lat": 51.30144, "Lon": -1.33661 },
+  "location": { "lat": 51.30144, "lon": -1.33661 },
   "speed": 34
 }
 ```
@@ -436,6 +437,7 @@ The sensor data relating to an alert summary. This sent after the summary to ens
     {
       "t": "1588251559000",
       "s": 34,
+      "l":{"lat": 55.000, "lon":-1.500},
       "ax": 0.123,
       "ay": 0.456,
       "az": 1.789,
