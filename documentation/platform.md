@@ -172,6 +172,28 @@ Published to once the latest completed block has been scored.
 }
 ```
 
+### Device Allocation
+A Device has been allocated and shipped to a customer.
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}:DeviceAllocation
+
+```json
+{
+   "ID":"1234567890", //RoyalMail 1D ID. Can be used for tracking (will expire)
+   "Metadata":"FULFILMENT#REQUEST",
+   "AccountID":"1234567890",
+   "BoxSerial":"VALID-DEVICE-1",
+   "Expiry":0,
+   "InvoiceID":"1234567890",
+   "IsRefurb":false,
+   "PersonID":"VALID-PERSON-1",
+   "Reference":"POLICY-NUMBER-1",
+   "Status":"Shipped",
+   "Summary":"The sender has let us know this item will be with us soon.",
+   "UniqueID":"1234567890" // Unique package 2D ID. Can be used for tracking (won't expire)
+}
+```
+
 ### Device Connected
 When the device completes a trip by having been stationary for 10 minuets. It connects to the platform and sends a message before the remaining trip data.
 
