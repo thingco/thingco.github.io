@@ -305,6 +305,57 @@ The customer has exceeded the excessive speeding criteria. 48hrs after the inita
 }
 ```
 
+### Excessive Speeding Events
+The customer has been speeding excessively over the course of a trip
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-ExcessiveSpeedingEventsTopic-Topic-${UID}
+
+```json
+{
+  "boxID": "VALID-DEVICE-1",
+  "personID": "VALID-PERSON-ID-1",
+  "tripID": "VALID-TRIP-ID",
+  "blockID": "VALID-BLOCK-ID",
+  "events": [
+    {
+      "location": {"lat":55.06653, "lon":-1.586},
+      "placename": "A19",
+      "timestamp": "1611756533000",
+      "speed": 133,
+      "roadspeed": 64,
+      "points": [
+        {
+          "Timestamp": "2021-01-27T14:08:53Z",
+          "Location": [-1.586, 55.06653],
+          "AdjustedDistance": 4.58,
+          "Confidence": 1,
+          "RoadSpeed": 64,
+          "RoadAvgSpeed": 0,
+          "Speed": 133,
+          "Speeding": true,
+          "RoadName": "A19",
+          "RoadType": "A-Road",
+          "PostCode": "NE23 7"
+        },
+        {
+          "Timestamp": "2021-01-27T14:08:54Z",
+          "Location": [-1.58545, 55.06647],
+          "AdjustedDistance": 4.58,
+          "Confidence": 1,
+          "RoadSpeed": 64,
+          "RoadAvgSpeed": 0,
+          "Speed": 130,
+          "Speeding": true,
+          "RoadName": "A19",
+          "RoadType": "A-Road",
+          "PostCode": "NE23 7"
+        }
+      ]
+    }
+  ]
+}
+```
+
 ### Matched Points
 Trip points post ThingCo enrichment.
 
