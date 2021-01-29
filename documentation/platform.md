@@ -570,6 +570,28 @@ The device has sent a tamper notification.
 }
 ```
 
+### Tracking Updates
+Tracking and delivery updates, for new policy sales and CoV. ID & UniqueID can be used to track a shipment using [Royal Mail Tracking.](https://www.royalmail.com/track-your-item#/) However, ID is a temporary reference and is recycled. UniqueID does not expire.
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}:TrackingUpdates
+
+```json
+{
+  "ID": "VALID-1D-TRACKING-ID",
+  "Metadata": "1611843954216115408",
+  "AccountID": "AWS-ACCOUNT-ID",
+  "BoxSerial": "VALID-DEVICE-1",
+  "Expiry": 1643379954,
+  "InvoiceID": "1234567890",
+  "IsRefurb": false,
+  "PersonID": "VALID-PERSON-ID-1",
+  "Reference": "POLICY-NUMBER",
+  "Status": "In Transit",
+  "Summary": "We have your item at Tyneside MC and it's on its way. ",
+  "UniqueID": "VALID-2D-TRACKING-ID"
+}
+```
+
 ### Trip Complete
 The device has complted a trip and all data has been receieved.
 
