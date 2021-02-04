@@ -254,7 +254,8 @@ The customer has installed their device.
   "batteryVoltage": 4091,
   "boxID": "VALID-DEVICE-1",
   "personID": "VALID-PERSON-1",
-  "timestamp": 1607346410
+  "timestamp": 1607346410,
+  "isFirst":true
 }
 ```
 
