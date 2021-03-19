@@ -425,6 +425,27 @@ The customer has surpassed the acceptable % of time over the limit and driving a
 }
 ```
 
+### Overnight Parking
+The customers policy risk address is different from the vehicles most common overnight parked location.
+`distanceFromRisk` in km
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-OvernightParkingTopic-Topic-${UID}
+
+```json
+{
+  "personID": "VALID-PERSON-ID-1",
+  "timestamp": "1597088197000",
+  "distanceFromRisk": 7.89,
+  "riskLocation": {"lat": 55.02, "lon": -1.57},
+  "riskPostcode": "NE1 2NH",
+  "overnightLocation": {"lat": 55.17, "lon": -1.53},
+  "overnightPostcode": "NE12 XYZ",
+  "queryFrom": "2021/03/10",
+  "queryTo": "2021/03/18",
+  "durationParked": "9h12m0s"
+}
+```
+
 ### Persistent Speeding
 The customer has not improved their persistent speeding pattern over a number of blocks and should be cancelled.
 `cancel` flag will be set to true only after 12 blocks have met the criteria
