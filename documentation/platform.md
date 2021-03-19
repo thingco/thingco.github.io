@@ -427,6 +427,7 @@ The customer has surpassed the acceptable % of time over the limit and driving a
 
 ### Overnight Parking
 The customers policy risk address is different from the vehicles most common overnight parked location.
+`distanceFromRisk` in km
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-OvernightParkingTopic-Topic-${UID}
 
