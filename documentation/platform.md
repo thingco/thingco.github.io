@@ -442,7 +442,8 @@ The customers policy risk address is different from the vehicles most common ove
   "overnightPostcode": "NE12 XYZ",
   "queryFrom": "2021/03/10",
   "queryTo": "2021/03/18",
-  "durationParked": "9h12m0s"
+  "durationParked": "9h12m0s",
+  "results": [{"geohash":"gcvc4ck","count":6,"duration":2628,"breakdown":{"night":1080,"day":1548}}]
 }
 ```
 
