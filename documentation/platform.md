@@ -588,8 +588,14 @@ The device has sent a tamper notification.
 
 ```json
 {
-  "boxID": "VALID-DEVICE-1",
-  "personID": "VALID-PERSON-ID-1"
+    "ax": 63,
+    "ay": -16,
+    "az": -17,
+    "batteryPercentage": 49,
+    "batteryVoltage": 3777,
+    "boxID": "VALID-DEVICE-1",
+    "personID": "VALID-PERSON-ID-1",
+    "timestamp": 1618762362
 }
 ```
 
