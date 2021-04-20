@@ -7,13 +7,13 @@ permalink: /platform
 ThingCo Platform
 ================
 
-ThingCo's platform is build upon an event-driven architecture leveraging AWS SNS as the backbone event bus. This means that a partner is able to subscribe to a range of topics and securely receieve messages in real time. This page will outline the available topics along with the message schema that is published.
+ThingCo's platform is build upon an event-driven architecture leveraging AWS SNS as the backbone event bus. This means that a partner is able to subscribe to a range of topics and securely receive messages in real time. This page will outline the available topics along with the message schema that is published.
 
-The ARN of a Topic is contructed as follows `arn:aws:sns:${AWS::Region}:${AWS::AccountId}:SNS_TOPIC_NAME`, and should be used if adding a trigger to a lambda function. 
+The ARN of a Topic is constructed as follows `arn:aws:sns:${AWS::Region}:${AWS::AccountId}:SNS_TOPIC_NAME`, and should be used if adding a trigger to a lambda function.
 
 ### Stack Details
 
-To ensure data segregation ThingCo deploy each partners stack in a seperate AWS account and maintian a strict POLP model for accessing data. Details of the installation are as follows.
+To ensure data segregation ThingCo deploy each partners stack in a separate AWS account and maintain a strict POLP model for accessing data. Details of the installation are as follows.
 
 ##### AccountId: 000000000000
 ##### Region: eu-west-1
@@ -93,6 +93,7 @@ A devices charge level at the end of a trip.
 The user has completed a block ~100 miles, and it is now ready to be scored. A block is made up of a minumium of 100 miles and will be scored as soon as the last trip in the block is completed. This means that if the user has driven 95 miles in there first block, then dirves a 15 mile trip the final block total will be 110 miles. This is to avoid the trip appearing in multiple blocks.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-BlockDistanceCompleteTopic-Topic-${UID}
+***Trigger:*** On Block Complete
 
 ```json
 {
@@ -111,6 +112,7 @@ The user has completed a block ~100 miles, and it is now ready to be scored. A b
 Published to once the latest completed block has been scored.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-BlockScoreCompleteTopic-Topic-${UID}
+***Trigger:*** On Block Complete
 
 ```json
 {
@@ -288,9 +290,11 @@ ThingCo has received the customers device and wether it can be re-used.
 ```
 
 ### Excessive Speeding
-The customer has exceeded the excessive speeding criteria. 48hrs after the inital event, the cancel field will be marked as true.
+The customer has exceeded the excessive speeding criteria. 48hrs after the initial event, the cancel field will be marked as true.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-ExcessiveSpeedingTopic-Topic-${UID}
+***Trigger:*** On Trip Complete
+***Trigger Conditions:*** Excessive speeding campaign conditions are met
 
 ```json
 {
@@ -310,6 +314,8 @@ The customer has exceeded the excessive speeding criteria. 48hrs after the inita
 The customer has been speeding excessively over the course of a trip
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-ExcessiveSpeedingEventsTopic-Topic-${UID}
+***Trigger:*** On Trip Complete
+***Trigger Conditions:*** At least one excessive speeding event recorded during the trip
 
 ```json
 {
@@ -361,6 +367,7 @@ The customer has been speeding excessively over the course of a trip
 Trip points post ThingCo enrichment.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-MatchedPointsTopic-Topic-${UID}
+***Trigger:*** On Trip Complete
 
 ```json
 {
@@ -415,6 +422,8 @@ The customer has surpassed the acceptable % of time over the limit and driving a
 `stage` indicates the number of campaigns (3 consecutive blocks) the customer has met the criteria for
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-NightSpeedingTopic-Topic-${UID}
+***Trigger:*** On Block Complete
+***Trigger Conditions:*** 3 new blocks completed and NightTime speeding campaign conditions are met
 
 ```json
 {
@@ -430,6 +439,8 @@ The customers policy risk address is different from the vehicles most common ove
 `distanceFromRisk` in km
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-OvernightParkingTopic-Topic-${UID}
+***Trigger:*** On Trip Complete
+***Trigger Conditions:*** 30 days since policy start / time last run and Overnight campaign conditions are met
 
 ```json
 {
@@ -452,6 +463,8 @@ The customer has not improved their persistent speeding pattern over a number of
 `cancel` flag will be set to true only after 12 blocks have met the criteria
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-PersistentSpeedingTopic-Topic-${UID}
+***Trigger:*** On Block Complete
+***Trigger Conditions:*** Minimum of 9 complete blocks have met the Persistent campaign criteria
 
 ```json
 {
@@ -466,6 +479,8 @@ The customer has not improved their persistent speeding pattern over a number of
 The customer has been speeding persistently over the course of a trip
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-PersistentSpeedingEventsTopic-Topic-${UID}
+***Trigger:*** On Trip Complete
+***Trigger Conditions:*** At least one persistent speeding event recorded during the trip
 
 ```json
 {
@@ -487,6 +502,7 @@ The customer has been speeding persistently over the course of a trip
 Trip points after basic validation.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-StandardPointsTopic-Topic-${UID}
+***Trigger:*** On Trip Complete
 
 ```json
 {
@@ -625,6 +641,7 @@ Tracking and delivery updates, for new policy sales and CoV. ID & UniqueID can b
 The device has complted a trip and all data has been receieved.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripCompleteTopic-Topic-${UID}
+***Trigger:*** On Trip Complete
 
 ```json
 {
@@ -642,6 +659,7 @@ The device has complted a trip and all data has been receieved.
 The latest trip has been checked for all event types
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripEventsProcessedTopic-Topic-${UID}
+***Trigger:*** On Trip Complete
 
 ```json
 {
