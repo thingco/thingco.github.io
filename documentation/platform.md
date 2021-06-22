@@ -510,7 +510,14 @@ The customer has been speeding persistently over the course of a trip
    "PersonID":"VALID-PERSON-1",
    "Reason":"NEW_BIZ", // NEW_BIZ, COV, REPLACEMENT, WARRANTY, RETURN_PACK, CUSTOMER_RETURN
    "Reference":"POLICY-NUMBER-1",
-   "UniqueID":"1234567890" // Unique package 2D ID. Can be used for tracking
+   "UniqueID":"1234567890", // Unique package 2D ID. Can be used for tracking
+   // Fields below here are *Not Used* on this topic but will appear in the message payload.
+   "BoxSerial":"",
+   "Expiry":0,
+   "InvoiceID":"",
+   "IsRefurb":false,
+   "Status":"",
+   "Summary":""
 }
 ```
 
