@@ -128,11 +128,9 @@ Published to once the latest completed block has been scored.
   },
   "eventDetails": {
     "durationEvents": 0.0,
-    "erraticEvents": {
-      "braking1": 56,
-      "braking2": 2,
-      "speedingUp1": 241,
-      "speedingUp2": 4
+    "ecoEvents": {
+      "sd": 0.19578,
+      "mean": -0.0731159
     },
     "speedingEvents": {
       "persistent": 32.0,
