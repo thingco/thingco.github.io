@@ -497,6 +497,23 @@ The customer has been speeding persistently over the course of a trip
 }
 ```
 
+### Shipment Created
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-ShipmentCreated
+***Trigger:*** On shipment label creation
+
+```json
+{
+   "ID":"1234567890", //RoyalMail 1D ID. Can be used for tracking
+   "Metadata":"FULFILMENT#REQUEST",
+   "AccountID":"1234567890",
+   "PersonID":"VALID-PERSON-1",
+   "Reason":"NEW_BIZ", // NEW_BIZ, COV, REPLACEMENT, WARRANTY, RETURN_PACK, CUSTOMER_RETURN
+   "Reference":"POLICY-NUMBER-1",
+   "UniqueID":"1234567890" // Unique package 2D ID. Can be used for tracking
+}
+```
+
 ### Standard Points
 Trip points after basic validation.
 
