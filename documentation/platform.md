@@ -301,6 +301,7 @@ The customer has exceeded the excessive speeding criteria. 48hrs after the initi
   "cancel": false,
   "location":{"lat": 55.008765, "lon":-1.456833},
   "timestamp": "1597088197000",
+  "eventTimestamp": "1597088197000",
   "roadName": "Hawkeys Lane",
   "roadSpeed": 113,
   "roadType": "B",
