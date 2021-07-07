@@ -172,6 +172,18 @@ Published to once the latest completed block has been scored.
 }
 ```
 
+### Delivery Driver Notification
+A trip has been flagged for delivery driver behaviour
+
+**Topic Name:** Please ask your Account Manager 
+
+```json
+{
+   "PersonID":"VALID-PERSON-1",
+   "TripID":"VALID-TRIP-1",
+}
+```
+
 ### Device Allocation
 A Device has been allocated and shipped to a customer.
 
