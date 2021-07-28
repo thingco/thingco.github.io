@@ -375,25 +375,27 @@ The customer has been speeding excessively over the course of a trip
 ```
 
 ### Genuine Accident
-Post processing using the accident sensor data to determain if we think this is a valid alert or not
+Post processing using the accident sensor data to determain if we think this is a valid alert
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-AccidentGenuineCheckOutputTopic-Topic-${UID}
 
 ```json
 {
-   "AccidentID":"6b8815b2-1ff9-3919-9bb2-9422431a0e9a",
-   "PersonID":"9367a6fc-b248-4637-b755-bcf1d709368c",
+   "AccidentID":"VALID-ACCIDENT-ID",
+   "PersonID":"VALID-PERSON-ID",
    "Accident":{
-      "personID":"9367a6fc-b248-4637-b755-bcf1d709368c",
+      "personID":"VALID-PERSON-ID",
       "altPK":"ACCIDENT",
       "acknowledgedSource":"VOICE",
-      "metadata":"ACCIDENT#6b8815b2-1ff9-3919-9bb2-9422431a0e9a",
-      "boxSerial":"89430301722013507510",
-      "accidentID":"6b8815b2-1ff9-3919-9bb2-9422431a0e9a",
+      "metadata":"ACCIDENT#VALID-ACCIDENT-ID",
+      "boxSerial":"VALID-BOX-ID",
+      "accidentID":"VALID-ACCIDENT-ID",
       "acknowledgedAt":"1627466861281",
       "location":{
          "lon":-1.764406681060791,
          "lat":53.8424072265625
       },
-      "incidentReference":"6b8815b2-1ff9-3919-9bb2-9422431a0e9a",
+      "incidentReference":"VALID-ACCIDENT-ID",
       "isConfirmed":false,
       "isAcknowledged":true,
       "isGenuine":false,
@@ -401,7 +403,7 @@ Post processing using the accident sensor data to determain if we think this is 
       "placename":"Baildon",
       "speed":0,
       "timestamp":"1627466758000",
-      "tripID":"2f5685b7-9e4a-37eb-a581-2a000e2ff6c2"
+      "tripID":"VALID-TRIP-ID"
    },
    "SensorData":[
       
