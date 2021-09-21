@@ -18,6 +18,62 @@ To ensure data segregation ThingCo deploy each partners stack in a separate AWS 
 ##### AccountId: 000000000000
 ##### Region: eu-west-1
 
+### Accident Customer Response
+Customer has acknowledged the accident via the APP or via VOICE
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-AccidentCustomerResponseTopic-Topic-${UID}
+
+```json
+{
+   "AccidentID":"VALID-ACCIDENT-ID",
+   "PersonID":"VALID-PERSON-ID",
+   "AcknowledgedSource": "APP",
+   "IsConfirmed": true
+}
+```
+
+### Accident Notification
+Accident has been determined to be genuine following either:
+- post processing or
+- the customer has confirmed it was an accident via the APP or via VOICE
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-AccidentNotificationTopic-Topic-${UID}
+
+```json
+{
+   "AccidentID":"VALID-ACCIDENT-ID",
+   "PersonID":"VALID-PERSON-ID",
+   "Accident":{
+      "personID":"VALID-PERSON-ID",
+      "altPK":"ACCIDENT",
+      "acknowledgedSource":"VOICE",
+      "metadata":"ACCIDENT#VALID-ACCIDENT-ID",
+      "boxSerial":"VALID-BOX-ID",
+      "accidentID":"VALID-ACCIDENT-ID",
+      "acknowledgedAt":"1627466861281",
+      "location":{
+         "lon":-1.764406681060791,
+         "lat":53.8424072265625
+      },
+      "incidentReference":"VALID-ACCIDENT-ID",
+      "isConfirmed":true,
+      "isAcknowledged":true,
+      "isGenuine":false,
+      "isUnresponsive":false,
+      "placename":"Baildon",
+      "speed":0,
+      "timestamp":"1627466758000",
+      "tripID":"VALID-TRIP-ID"
+   },
+   "SensorData":[
+      {"t":"1614270136","ax":-0.05859375,"ay":-0.0908203125,"az":-0.001953125,"gx":0,"gy":0,"gz":0},
+      {"t":"1614270136","ax":-0.0810546875,"ay":-0.071533203125,"az":-0.02587890625,"gx":0,"gy":0,"gz":0},
+      {"t":"1614270136","ax":-0.10400390625,"ay":-0.044189453125,"az":-0.025634765625,"gx":0,"gy":0,"gz":0},
+      {"t":"1614270136","ax":-0.072021484375,"ay":-0.0380859375,"az":-0.031982421875,"gx":0,"gy":0,"gz":0}
+   ],
+}
+```
+
 ### Accident Voice Received
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-AccidentVoiceReceivedTopic-Topic-${UID}
@@ -375,7 +431,7 @@ The customer has been speeding excessively over the course of a trip
 ```
 
 ### Genuine Accident
-Post processing using the accident sensor data to determain if we think this is a valid alert
+Post processing using the accident sensor data to determine if we think this is a valid alert
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-AccidentGenuineCheckOutputTopic-Topic-${UID}
 
