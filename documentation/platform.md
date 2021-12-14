@@ -342,6 +342,24 @@ Types: `LOW_BATTERY`, `NO_INSTALL`, `TAMPER`
 }
 ```
 
+### Device Orientation
+Message indicating the orientation of device.
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}:DeviceNotInstalledRightOrientationTopicARN
+
+```json
+{
+  "personID":          "VALID-PERSON-ID-1",
+  "deviceID":          "VALID-DEVICE-1",
+  "timestamp":         1638895679,
+  "batteryVoltage":    13,
+  "batteryPercentage": 70,
+  "ax":                63,
+  "ay":                -16,
+  "az":                -17,
+}
+```
+
 ### Device Returned
 ThingCo has received the customers device and wether it can be re-used.
 
@@ -810,7 +828,8 @@ The device has sent a tamper notification.
     "batteryVoltage": 3777,
     "boxID": "VALID-DEVICE-1",
     "personID": "VALID-PERSON-ID-1",
-    "timestamp": 1618762362
+    "timestamp": 1618762362,
+    "TamperType": "Physical",
 }
 ```
 
