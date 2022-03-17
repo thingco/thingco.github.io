@@ -869,7 +869,35 @@ The device has complted a trip and all data has been receieved.
   "personID": "VALID-PERSON-ID-1",
   "startTimestamp": "1606928671000",
   "endTimestamp": "1606935465000",
-  "endPlacename": "Newcastle upon Tyne"
+  "startLatitude": 55.011166,
+  "startLongitude": -1.591461,
+  "startPlacename": "Longbenton",
+  "endLatitude": 55.0191657,
+  "endLongitude": -1.4260613,
+  "endPlacename": "Tynemouth",
+    "eventCount": 0,
+  "perfect": false,
+  "matched": {
+    "Summary": {
+      "WarningCount": 0,
+      "GroupedWarningCount": null,
+      "Warnings": null,
+      "TripGraph": {
+        "graphData": null
+      }
+    }
+  },
+  "duration": 0,
+  "durationMap": {
+    "1643666627000": 366
+  },
+  "distance": 0,
+  "distanceMap": {
+    "1643666627000": 3257.6619894299356
+  },
+  "polyline": "-",
+  "anomaly": false,
+  "videoRequested": ""
 }
 ```
 
