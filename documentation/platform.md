@@ -956,5 +956,3 @@ The latest trip has been checked for all event types
   "Polyline": "BASE64-ENCODED-POLYLINE",
 }
 ```
-
-{e0e9ec05-6c63-4bd9-a912-2806f0fb8327 TRIPEVENT#SPEEDING#2022/03/17@13:49:35 {-1.58205 55.0659} You were speeding on the A19. The speed limit on this road is 40. SPEEDING MILD map[limit:64 placename:A19 speed:72] A19 1647524975000 9a2f925a-e7a6-3bfc-a039-bd0c126bb500 0063d164-7691-4a1d-8289-53aacb6fc48b
