@@ -160,7 +160,34 @@ The user has completed a block ~100 miles, and it is now ready to be scored. A b
   "metadata": "BLOCK#COMPLETE#2006-02-01@15:04:05#VALID-BLOCK-ID-1",
   "personID": "VALID-PERSON-ID-1",
   "scored": false,
-  "trips": ["VALID-TRIP-ID-1", "VALID-TRIP-ID-2", "VALID-TRIP-ID-3"]
+  "trips": ["VALID-TRIP-ID-1", "VALID-TRIP-ID-2", "VALID-TRIP-ID-3"],
+  "scores": {
+    "ADASReaction":0,
+    "DrivingDuration":0,
+    "ErraticDriving":0,
+    "LaneDepature":0,
+    "Speeding":0,
+    "Tailgating":0,
+    "TimeOfDay":0,
+    "OverallScore":0
+  },
+  "eventCounts": {
+    "ADASReaction":0,
+    "DrivingDuration":0,
+    "ErraticDriving":0,
+    "LaneDepature":0,
+    "Speeding":0,
+    "Tailgating":0,
+    "TimeOfDay":0,
+    "OverallScore":0
+  },
+  "eventDetails": {
+    "ecoEvents":null,
+    "erraticEvents":null,
+    "speedingEvents":null,
+    "timeOfDayEvents":null,
+    "durationEvents":0.0
+  }
 }
 ```
 
@@ -787,7 +814,13 @@ Intial alert summary message sent as soon as the device detects an impact.
   "tripID": "VALID-TRIP-ID-1",
   "tripStartTime": "1551442483000",
   "location": { "lat": 51.30144, "lon": -1.33661 },
-  "speed": 34
+  "speed": 34,
+  "altPK":"ACCIDENT",
+  "incidentReference":"VALID-ACCIDENT-ID-1",
+  "isConfirmed":false,
+  "isAcknowledged":false,
+  "isGenuine":false,
+  "isUnresponsive":false,
 }
 ```
 
