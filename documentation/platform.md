@@ -869,7 +869,35 @@ The device has complted a trip and all data has been receieved.
   "personID": "VALID-PERSON-ID-1",
   "startTimestamp": "1606928671000",
   "endTimestamp": "1606935465000",
-  "endPlacename": "Newcastle upon Tyne"
+  "startLatitude": 55.011166,
+  "startLongitude": -1.591461,
+  "startPlacename": "Longbenton",
+  "endLatitude": 55.0191657,
+  "endLongitude": -1.4260613,
+  "endPlacename": "Tynemouth",
+    "eventCount": 0,
+  "perfect": false,
+  "matched": {
+    "Summary": {
+      "WarningCount": 0,
+      "GroupedWarningCount": null,
+      "Warnings": null,
+      "TripGraph": {
+        "graphData": null
+      }
+    }
+  },
+  "duration": 0,
+  "durationMap": {
+    "1643666627000": 366
+  },
+  "distance": 0,
+  "distanceMap": {
+    "1643666627000": 3257.6619894299356
+  },
+  "polyline": "-",
+  "anomaly": false,
+  "videoRequested": ""
 }
 ```
 
@@ -886,24 +914,43 @@ The latest trip has been checked for all event types
   "Distance": 10.1,
   "Duration": 60,
   "StartLocation":{
-    "LON": -1.500000,
-    "LAT": 55.000000
+    "lon": -1.500000,
+    "lat": 55.000000
   },
   "StartPlacename": "Newcastle",
   "StartTimestamp": "1234567890123",
   "EndLocation": {
-    "LON": -1.500000,
-    "LAT": 55.000000
+    "lon": -1.500000,
+    "lat": 55.000000
   },
   "EndPlacename": "Newcastle",
   "EndTimestamp": "1234567890123",
   "BlockID": "VALID-BLOCK-ID-1",
   "Count": 1,
-  "IsPerfect": true,
+  "IsPerfect": false,
   "Events": [
     {
       "Event": "SPEEDING",
-      "Count": 1
+      "Count": 1,
+      "PersonID": "VALID-PERSON-ID-1",
+      "TripID": "VALID-TRIP-ID-1",
+      "TripStart": "1234567890123",
+      "BlockID": "VALID-BLOCK-ID-1",
+      "Events": [
+        {
+          "personID": "VALID-PERSON-ID",
+          "metadata": "TRIPEVENT#SPEEDING#2022/03/17@13:49:35",
+          "location": {"lat": 55.0659, "lon": -1.58205},
+          "message": "You were speeding on the A19. The speed limit on this road is 40",
+          "eventName": "SPEEDING",
+          "severity": "MILD",
+          "messageArgs": {"limit": 40, "placename": "A19", "speed": 72},
+          "placename": "A19",
+          "timestamp": "1647524975000",
+          "tripID": "VALID-TRIP-ID-1",
+          "blockID": "VALID-BLOCK-ID-1"
+        }
+      ]
     }
   ],
   "Polyline": "BASE64-ENCODED-POLYLINE",
