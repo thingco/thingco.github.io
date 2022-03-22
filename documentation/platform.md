@@ -146,7 +146,7 @@ A devices charge level at the end of a trip.
 ```
 
 ### Block Distance Complete
-The user has completed a block ~100 miles, and it is now ready to be scored. A block is made up of a minumium of 100 miles and will be scored as soon as the last trip in the block is completed. This means that if the user has driven 95 miles in there first block, then dirves a 15 mile trip the final block total will be 110 miles. This is to avoid the trip appearing in multiple blocks.
+The user has completed a block ~100 miles, and it is now ready to be scored. A block is made up of a minumium of 100 miles and will be scored as soon as the last trip in the block is completed. This means that if the user has driven 95 miles in their first block, then drives a 15 mile trip the final block total will be 110 miles. This is to avoid the trip appearing in multiple blocks.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-BlockDistanceCompleteTopic-Topic-${UID}
 ***Trigger:*** On Block Complete
@@ -255,10 +255,12 @@ A Device has been allocated and shipped to a customer.
    "InvoiceID":"1234567890",
    "IsRefurb":false,
    "PersonID":"VALID-PERSON-1",
+   "Reason": "REPLACEMENT",
    "Reference":"POLICY-NUMBER-1",
    "Status":"Shipped",
    "Summary":"The sender has let us know this item will be with us soon.",
-   "UniqueID":"1234567890" // Unique package 2D ID. Can be used for tracking (won't expire)
+   "UniqueID":"1234567890", // Unique package 2D ID. Can be used for tracking (won't expire)
+   "Variant":"LittleTheo-GD-0_0_1"
 }
 ```
 
@@ -711,7 +713,8 @@ The customer has been speeding persistently over the course of a trip
    "InvoiceID":"",
    "IsRefurb":false,
    "Status":"",
-   "Summary":""
+   "Summary":"",
+   "Variant":""
 }
 ```
 
