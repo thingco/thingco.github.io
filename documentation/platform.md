@@ -146,7 +146,7 @@ A devices charge level at the end of a trip.
 ```
 
 ### Block Distance Complete
-The user has completed a block ~100 miles, and it is now ready to be scored. A block is made up of a minumium of 100 miles and will be scored as soon as the last trip in the block is completed. This means that if the user has driven 95 miles in there first block, then dirves a 15 mile trip the final block total will be 110 miles. This is to avoid the trip appearing in multiple blocks.
+The user has completed a block ~100 miles, and it is now ready to be scored. A block is made up of a minumium of 100 miles and will be scored as soon as the last trip in the block is completed. This means that if the user has driven 95 miles in their first block, then drives a 15 mile trip the final block total will be 110 miles. This is to avoid the trip appearing in multiple blocks.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-BlockDistanceCompleteTopic-Topic-${UID}
 ***Trigger:*** On Block Complete
@@ -160,7 +160,34 @@ The user has completed a block ~100 miles, and it is now ready to be scored. A b
   "metadata": "BLOCK#COMPLETE#2006-02-01@15:04:05#VALID-BLOCK-ID-1",
   "personID": "VALID-PERSON-ID-1",
   "scored": false,
-  "trips": ["VALID-TRIP-ID-1", "VALID-TRIP-ID-2", "VALID-TRIP-ID-3"]
+  "trips": ["VALID-TRIP-ID-1", "VALID-TRIP-ID-2", "VALID-TRIP-ID-3"],
+  "scores": {
+    "ADASReaction":0,
+    "DrivingDuration":0,
+    "ErraticDriving":0,
+    "LaneDepature":0,
+    "Speeding":0,
+    "Tailgating":0,
+    "TimeOfDay":0,
+    "OverallScore":0
+  },
+  "eventCounts": {
+    "ADASReaction":0,
+    "DrivingDuration":0,
+    "ErraticDriving":0,
+    "LaneDepature":0,
+    "Speeding":0,
+    "Tailgating":0,
+    "TimeOfDay":0,
+    "OverallScore":0
+  },
+  "eventDetails": {
+    "ecoEvents":null,
+    "erraticEvents":null,
+    "speedingEvents":null,
+    "timeOfDayEvents":null,
+    "durationEvents":0.0
+  }
 }
 ```
 
@@ -255,10 +282,12 @@ A Device has been allocated and shipped to a customer.
    "InvoiceID":"1234567890",
    "IsRefurb":false,
    "PersonID":"VALID-PERSON-1",
+   "Reason": "REPLACEMENT",
    "Reference":"POLICY-NUMBER-1",
    "Status":"Shipped",
    "Summary":"The sender has let us know this item will be with us soon.",
-   "UniqueID":"1234567890" // Unique package 2D ID. Can be used for tracking (won't expire)
+   "UniqueID":"1234567890", // Unique package 2D ID. Can be used for tracking (won't expire)
+   "Variant":"LittleTheo-GD-0_0_1"
 }
 ```
 
@@ -711,7 +740,8 @@ The customer has been speeding persistently over the course of a trip
    "InvoiceID":"",
    "IsRefurb":false,
    "Status":"",
-   "Summary":""
+   "Summary":"",
+   "Variant":""
 }
 ```
 
@@ -784,7 +814,13 @@ Intial alert summary message sent as soon as the device detects an impact.
   "tripID": "VALID-TRIP-ID-1",
   "tripStartTime": "1551442483000",
   "location": { "lat": 51.30144, "lon": -1.33661 },
-  "speed": 34
+  "speed": 34,
+  "altPK":"ACCIDENT",
+  "incidentReference":"VALID-ACCIDENT-ID-1",
+  "isConfirmed":false,
+  "isAcknowledged":false,
+  "isGenuine":false,
+  "isUnresponsive":false,
 }
 ```
 
