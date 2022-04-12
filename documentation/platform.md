@@ -614,8 +614,8 @@ Trip points post ThingCo enrichment.
     ],
     "Summary": {
       "WarningCount": 0,
-      "GroupedWarningCount": {},
-      "Warnings": [],
+      "GroupedWarningCount": null,
+      "Warnings": null,
       "TripGraph": {
         "graphData": [
           {
@@ -627,13 +627,17 @@ Trip points post ThingCo enrichment.
       }
     }
   },
+  "duration": 0,
   "durationMap": {
     "1565242704004": 138
   },
+  "distance": 0,
   "distanceMap": {
     "1565242704004": 2035.6107122000003
   },
-  "anomaly": false
+  "polyline": "",
+  "anomaly": false,
+  "videoRequested": ""
 }
 ```
 
@@ -788,13 +792,17 @@ Trip points after basic validation.
       "SignalQuality": -51
     }
   ],
+  "duration": 0,
   "durationMap": {
     "1565242704004": 138
   },
+  "distance": 0,
   "distanceMap": {
     "1565242704004": 2035.6107122000003
   },
-  "anomaly": false
+  "polyline": "",
+  "anomaly": false,
+  "videoRequested": ""
 }
 ```
 
