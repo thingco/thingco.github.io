@@ -146,7 +146,7 @@ A devices charge level at the end of a trip.
 ```
 
 ### Block Distance Complete
-The user has completed a block ~100 miles, and it is now ready to be scored. A block is made up of a minumium of 100 miles and will be scored as soon as the last trip in the block is completed. This means that if the user has driven 95 miles in their first block, then drives a 15 mile trip the final block total will be 110 miles. This is to avoid the trip appearing in multiple blocks.
+The user has completed a block ~100 miles, and it is now ready to be scored. A block is made up of a minimum of 100 miles and will be scored as soon as the last trip in the block is completed. This means that if the user has driven 95 miles in their first block, then drives a 15 mile trip the final block total will be 110 miles. This is to avoid the trip appearing in multiple blocks.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-BlockDistanceCompleteTopic-Topic-${UID}
 ***Trigger:*** On Block Complete
@@ -390,7 +390,7 @@ Message indicating the orientation of device.
 ```
 
 ### Device Returned
-ThingCo has received the customers device and wether it can be re-used.
+ThingCo has received the customers device and whether it can be re-used.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceReturnedTopic-Topic-${UID}
 
@@ -508,21 +508,11 @@ Post processing using the accident sensor data to determine if we think this is 
       "timestamp":"1627466758000",
       "tripID":"VALID-TRIP-ID"
    },
-   "SensorData":[
-      
-   ],
-   "AbsoluteSensorData":[
-      
-   ],
-   "MovingAverage":[
-      
-   ],
-   "Gradient":[
-      
-   ],
-   "GradientCrashRange":[
-      
-   ],
+   "SensorData":[],
+   "AbsoluteSensorData":[],
+   "MovingAverage":[],
+   "Gradient":[],
+   "GradientCrashRange":[],
    "MaxGForce":{
       "ax":3.198974609375,
       "ay":-3.45751953125,
@@ -850,7 +840,7 @@ Trip points after basic validation.
 ```
 
 ### Standardised Accident
-Intial alert summary message sent as soon as the device detects an impact.
+Initial alert summary message sent as soon as the device detects an impact.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-StandardisedAccidentTopic-Topic-${UID}
 
@@ -944,7 +934,7 @@ Tracking and delivery updates, for new policy sales and CoV. ID & UniqueID can b
 ```
 
 ### Trip Complete
-The device has complted a trip and all data has been receieved.
+The device has completed a trip and all data has been received.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripCompleteTopic-Topic-${UID}
 ***Trigger:*** On Trip Complete
