@@ -594,11 +594,24 @@ Trip points post ThingCo enrichment.
   "id": "VALID-TRIP-ID-1",
   "blockID": "VALID-BLOCK-ID-1",
   "boxID": "VALID-DEVICE-1",
+  "personID": "VALID-PERSON-ID",
+  "startTimestamp": "1649781755000",
+  "endTimestamp": "1649782638000",
+  "startLatitude": 0,
+  "startLongitude": 0,
+  "endLatitude": 0,
+  "endLongitude": 0,
   "startPlacename": "East the Water",
   "endPlacename": "Bideford",
+  "eventCount": 0,
+  "perfect": false,
   "matched": {
     "points": [
       {
+        "MatchedPointID": "",
+        "BoxID": "VALID-DEVICE-1",
+        "TripID": "VALID-TRIP-ID-1",
+        "BlockID": "VALID-BLOCK-ID-1",
         "Timestamp": "2019-08-08T05:38:24.0045Z",
         "Location": [-4.18974, 51.01756],
         "AdjustedDistance": 18.15,
@@ -607,9 +620,13 @@ Trip points post ThingCo enrichment.
         "RoadAvgSpeed": 64,
         "Speed": 69,
         "Speeding": false,
+        "FWeekday": "",
+        "TWeekday": "",
         "RoadName": "Manteo Way",
         "RoadType": "UNKNOWN",
-        "PostCode": "EX39 4"
+        "PostCode": "EX39 4",
+        "HDOP": 0.699999988079071,
+        "NumberOfSats": 12
       }
     ],
     "Summary": {
@@ -760,8 +777,17 @@ Trip points after basic validation.
   "id": "VALID-TRIP-ID-1",
   "blockID": "VALID-BLOCK-ID-1",
   "boxID": "VALID-DEVICE-1",
+  "personID": "VALID-PERSON-ID",
+  "startTimestamp": "1649781755000",
+  "endTimestamp": "1649782638000",
+  "startLatitude": 0,
+  "startLongitude": 0,
+  "endLatitude": 0,
+  "endLongitude": 0,
   "startPlacename": "East the Water",
   "endPlacename": "Bideford",
+  "eventCount": 0,
+  "perfect": false,
   "points": [
     {
       "TripID": "VALID-TRIP-ID-1",
@@ -774,6 +800,8 @@ Trip points after basic validation.
       "Location": [-4.18988, 51.01747],
       "Heading": 315,
       "Valid": true,
+      "DistanceToCar": -1,
+      "FrontCarSpeed": -1,
       "Speed": 69,
       "SpeedLimit": 64,
       "RoadType": "UNKNOWN",
@@ -785,13 +813,28 @@ Trip points after basic validation.
         "ax": [-0.115, -0.306, 0.045],
         "ay": [-0.084, -0.242, 0.087],
         "az": [0.986, 0, 1.089],
-        "gx": [-0.0004, -0.0084, 0.008],
-        "gy": [-0.0018, -0.011, 0.0065],
-        "gz": [-0.0001, -0.0044, 0.0049]
+        "gx": [],
+        "gy": [],
+        "gz": []
       },
+      "ReactionTime": 0,
+      "Reaction": "",
+      "TTC": null,
+      "TripStartTimestamp": "1649781755000",
+      "CarInFront": false,
       "SignalQuality": -51
     }
   ],
+  "matched": {
+    "Summary": {
+      "WarningCount": 0,
+      "GroupedWarningCount": null,
+      "Warnings": null,
+      "TripGraph": {
+        "graphData": null
+      }
+    }
+  },
   "duration": 0,
   "durationMap": {
     "1565242704004": 138
@@ -850,9 +893,9 @@ The sensor data relating to an alert summary. This sent after the summary to ens
       "ax": 0.123,
       "ay": 0.456,
       "az": 1.789,
-      "gx": 0,
-      "gy": 0,
-      "gz": 0
+      "gx": 0.0,
+      "gy": 0.0,
+      "gz": 0.0
     }
   ]
 }
@@ -873,7 +916,8 @@ The device has sent a tamper notification.
     "boxID": "VALID-DEVICE-1",
     "personID": "VALID-PERSON-ID-1",
     "timestamp": 1618762362,
-    "TamperType": "Physical",
+    "isFirst": false,
+    "tamperType": "Physical",
 }
 ```
 
@@ -919,7 +963,7 @@ The device has complted a trip and all data has been receieved.
   "endLatitude": 55.0191657,
   "endLongitude": -1.4260613,
   "endPlacename": "Tynemouth",
-    "eventCount": 0,
+  "eventCount": 0,
   "perfect": false,
   "matched": {
     "Summary": {
