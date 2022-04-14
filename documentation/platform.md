@@ -830,9 +830,7 @@ Trip points after basic validation.
     "1565242704004": 138
   },
   "distance": 0,
-  "distanceMap": {
-    "1565242704004": 2035.6107122000003
-  },
+  "distanceMap": null,
   "polyline": "",
   "anomaly": false,
   "videoRequested": ""
