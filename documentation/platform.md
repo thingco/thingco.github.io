@@ -1034,7 +1034,7 @@ The latest trip has been checked for all event types
 ```
 
 ### Trip Points
-Consolidated Trip points (contains both standard points from GPS and matched point following route matching)
+Consolidated Trip points (contains both standard points from GPS and matched points following route matching)
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripPointsTopic
 ***Trigger:*** On Trip Complete
