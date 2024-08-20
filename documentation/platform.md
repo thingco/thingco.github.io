@@ -1032,3 +1032,97 @@ The latest trip has been checked for all event types
   "Polyline": "BASE64-ENCODED-POLYLINE",
 }
 ```
+
+### Trip Points
+Consolidated Trip points (contains both standard points from GPS and matched points following route matching)
+
+**Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripPointsTopic
+***Trigger:*** On Trip Complete
+
+```json
+{
+  "personID": "e86fd641-6361-4910-bfc5-7d4890b44e56",
+  "tripID": "18a67a38-0290-3893-ac1f-6a7c4a959c4d",
+  "blockID": "88b2d007-96c3-4cd5-8a99-828bb88cd1d7",
+  "points": [
+    {
+      "timestamp": "2024-08-19T17:21:21Z",
+      "matchedPoint": {
+        "lat": 55.05573,
+        "lon": -1.59524,
+        "adjustedDistance": 9.01,
+        "confidence": 0.55,
+        "roadSpeed": 32,
+        "roadName": "Station Road",
+        "roadType": "UNKNOWN",
+        "postcode": "NE23 7"
+      },
+      "standardPoint": {
+        "lat": 55.05579376,
+        "lon": -1.59528995,
+        "heading": 337,
+        "speed": 0,
+        "hdop": 0.800000011920929,
+        "satelliteCount": 12,
+        "sensorData": {
+          "ax": [
+            -0.010986328125,
+            -0.032958984375,
+            0.018798828125
+          ],
+          "ay": [
+            0.006591796875,
+            -0.008056640625,
+            0.0224609375
+          ],
+          "az": [
+            -0.010986328125,
+            -0.032958984375,
+            0.018798828125
+          ]
+        }
+      }
+    },
+    {
+      "timestamp": "2024-08-19T17:21:22Z",
+      "matchedPoint": {
+        "lat": 55.05573,
+        "lon": -1.59524,
+        "adjustedDistance": 9.01,
+        "confidence": 0.55,
+        "roadSpeed": 32,
+        "roadName": "Station Road",
+        "roadType": "UNKNOWN",
+        "postcode": "NE23 7"
+      },
+      "standardPoint": {
+        "lat": 55.05579376,
+        "lon": -1.59528995,
+        "heading": 337,
+        "speed": 0,
+        "hdop": 0.800000011920929,
+        "satelliteCount": 12,
+        "sensorData": {
+          "ax": [
+            -0.01171875,
+            -0.020263671875,
+            -0.002197265625
+          ],
+          "ay": [
+            0.0068359375,
+            -0.00390625,
+            0.017578125
+          ],
+          "az": [
+            -0.01171875,
+            -0.020263671875,
+            -0.002197265625
+          ]
+        }
+      }
+    }
+  ],
+  "messageNumber": 3,
+  "totalMessageCount": 3
+}
+```
