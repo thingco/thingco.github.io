@@ -4,8 +4,7 @@ title: Platform Info
 permalink: /platform
 ---
 
-ThingCo Platform
-================
+# ThingCo Platform
 
 ThingCo's platform is build upon an event-driven architecture leveraging AWS SNS as the backbone event bus. This means that a partner is able to subscribe to a range of topics and securely receive messages in real time. This page will outline the available topics along with the message schema that is published.
 
@@ -16,24 +15,28 @@ The ARN of a Topic is constructed as follows `arn:aws:sns:${AWS::Region}:${AWS::
 To ensure data segregation ThingCo deploy each partners stack in a separate AWS account and maintain a strict POLP model for accessing data. Details of the installation are as follows.
 
 ##### AccountId: 000000000000
+
 ##### Region: eu-west-1
 
 ### Accident Customer Response
+
 Customer has acknowledged the accident via the APP or via VOICE
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-AccidentCustomerResponseTopic-Topic-${UID}
 
 ```json
 {
-   "AccidentID":"VALID-ACCIDENT-ID",
-   "PersonID":"VALID-PERSON-ID",
-   "AcknowledgedSource": "APP",
-   "IsConfirmed": true
+  "AccidentID": "VALID-ACCIDENT-ID",
+  "PersonID": "VALID-PERSON-ID",
+  "AcknowledgedSource": "APP",
+  "IsConfirmed": true
 }
 ```
 
 ### Accident Notification
+
 Accident has been determined to be genuine following either:
+
 - post processing or
 - the customer has confirmed it was an accident via the APP or via VOICE
 
@@ -41,36 +44,68 @@ Accident has been determined to be genuine following either:
 
 ```json
 {
-   "AccidentID":"VALID-ACCIDENT-ID",
-   "PersonID":"VALID-PERSON-ID",
-   "Accident":{
-      "personID":"VALID-PERSON-ID",
-      "altPK":"ACCIDENT",
-      "acknowledgedSource":"VOICE",
-      "metadata":"ACCIDENT#VALID-ACCIDENT-ID",
-      "boxSerial":"VALID-BOX-ID",
-      "accidentID":"VALID-ACCIDENT-ID",
-      "acknowledgedAt":"1627466861281",
-      "location":{
-         "lon":-1.764406681060791,
-         "lat":53.8424072265625
-      },
-      "incidentReference":"VALID-ACCIDENT-ID",
-      "isConfirmed":true,
-      "isAcknowledged":true,
-      "isGenuine":false,
-      "isUnresponsive":false,
-      "placename":"Baildon",
-      "speed":0,
-      "timestamp":"1627466758000",
-      "tripID":"VALID-TRIP-ID"
-   },
-   "SensorData":[
-      {"t":"1614270136","ax":-0.05859375,"ay":-0.0908203125,"az":-0.001953125,"gx":0,"gy":0,"gz":0},
-      {"t":"1614270136","ax":-0.0810546875,"ay":-0.071533203125,"az":-0.02587890625,"gx":0,"gy":0,"gz":0},
-      {"t":"1614270136","ax":-0.10400390625,"ay":-0.044189453125,"az":-0.025634765625,"gx":0,"gy":0,"gz":0},
-      {"t":"1614270136","ax":-0.072021484375,"ay":-0.0380859375,"az":-0.031982421875,"gx":0,"gy":0,"gz":0}
-   ],
+  "AccidentID": "VALID-ACCIDENT-ID",
+  "PersonID": "VALID-PERSON-ID",
+  "Accident": {
+    "personID": "VALID-PERSON-ID",
+    "altPK": "ACCIDENT",
+    "acknowledgedSource": "VOICE",
+    "metadata": "ACCIDENT#VALID-ACCIDENT-ID",
+    "boxSerial": "VALID-BOX-ID",
+    "accidentID": "VALID-ACCIDENT-ID",
+    "acknowledgedAt": "1627466861281",
+    "location": {
+      "lon": -1.764406681060791,
+      "lat": 53.8424072265625
+    },
+    "incidentReference": "VALID-ACCIDENT-ID",
+    "isConfirmed": true,
+    "isAcknowledged": true,
+    "isGenuine": false,
+    "isUnresponsive": false,
+    "placename": "Baildon",
+    "speed": 0,
+    "timestamp": "1627466758000",
+    "tripID": "VALID-TRIP-ID"
+  },
+  "SensorData": [
+    {
+      "t": "1614270136",
+      "ax": -0.05859375,
+      "ay": -0.0908203125,
+      "az": -0.001953125,
+      "gx": 0,
+      "gy": 0,
+      "gz": 0
+    },
+    {
+      "t": "1614270136",
+      "ax": -0.0810546875,
+      "ay": -0.071533203125,
+      "az": -0.02587890625,
+      "gx": 0,
+      "gy": 0,
+      "gz": 0
+    },
+    {
+      "t": "1614270136",
+      "ax": -0.10400390625,
+      "ay": -0.044189453125,
+      "az": -0.025634765625,
+      "gx": 0,
+      "gy": 0,
+      "gz": 0
+    },
+    {
+      "t": "1614270136",
+      "ax": -0.072021484375,
+      "ay": -0.0380859375,
+      "az": -0.031982421875,
+      "gx": 0,
+      "gy": 0,
+      "gz": 0
+    }
+  ]
 }
 ```
 
@@ -80,37 +115,38 @@ Accident has been determined to be genuine following either:
 
 ```json
 {
-	"AccidentID":            "VALID-ACCIDENT-ID-1",
-	"BoxID":                 "VALID-BOX-ID-1",
-	"PersonID":              "VALID-PERSON-ID-1",
-	"TripID":                "VALID-TRIP-ID-1",
-	"AccidentConfirmed":     "Yes", //Yes, No, Unresponsive
-	"AccidentLocation":      "52.485832,-1.893705",
-	"AccidentPlacename":     "Birmingham",
-	"AccidentSpeed":         "63",
-	"AccidentTime":          "1608188020000",
-	"BoxContactNumber":      "+431234567890123",
-	"BoxStatus":             "INSTALLED", //TAMPERED, INSTALLED, UNREGISTERED
-	"BoxType":               "LittleTheo",
-	"CustomerFirstName":     "Matt",
-	"CustomerLastName":      "Masters",
-	"CustomerAddressFull":   "Suite 1, neon, Quorum Park, Newcastle, NE12 8BU",
-	"CustomerPostcode":      "NE12 8BU",
-	"ContactCustomer":       "",
-	"ContactNumber":         "1234", // Last 4 digits
-	"ContactNumberFull":     "+447777771234",
-	"CustomerEmail":         "support@drivetheo.com",
-	"PolicyNumber":          "PolicyNumber",
-	"PolicyMileage":         "PolicyMileage",
-	"VRN":                   "TE57 1AB",
-	"VehicleMake":           "Tesla",
-	"VehicleModel":          "Model 3",
-	"VehicleRegisteredYear": "2020",
-	"ResponderLambda":       "Function:ARN"
+  "AccidentID": "VALID-ACCIDENT-ID-1",
+  "BoxID": "VALID-BOX-ID-1",
+  "PersonID": "VALID-PERSON-ID-1",
+  "TripID": "VALID-TRIP-ID-1",
+  "AccidentConfirmed": "Yes", //Yes, No, Unresponsive
+  "AccidentLocation": "52.485832,-1.893705",
+  "AccidentPlacename": "Birmingham",
+  "AccidentSpeed": "63",
+  "AccidentTime": "1608188020000",
+  "BoxContactNumber": "+431234567890123",
+  "BoxStatus": "INSTALLED", //TAMPERED, INSTALLED, UNREGISTERED
+  "BoxType": "LittleTheo",
+  "CustomerFirstName": "Matt",
+  "CustomerLastName": "Masters",
+  "CustomerAddressFull": "Suite 1, neon, Quorum Park, Newcastle, NE12 8BU",
+  "CustomerPostcode": "NE12 8BU",
+  "ContactCustomer": "",
+  "ContactNumber": "1234", // Last 4 digits
+  "ContactNumberFull": "+447777771234",
+  "CustomerEmail": "support@drivetheo.com",
+  "PolicyNumber": "PolicyNumber",
+  "PolicyMileage": "PolicyMileage",
+  "VRN": "TE57 1AB",
+  "VehicleMake": "Tesla",
+  "VehicleModel": "Model 3",
+  "VehicleRegisteredYear": "2020",
+  "ResponderLambda": "Function:ARN"
 }
 ```
 
 ### App Open
+
 Posted to each time a user opens the mobile App
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-AppOpenTopic-Topic-${UID}
@@ -123,33 +159,35 @@ Posted to each time a user opens the mobile App
 ```
 
 ### Battery Data
+
 A devices charge level at the end of a trip.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-BatteryDataTopic-Topic-${UID}
 
 ```json
 {
-    "battery_percent": 100,
-    "battery_voltage": 4400,
-    "box_id": "VALID-DEVICE-1",
-    "connection_type": 4,
-    "location": {
-      "lat": 55.000000,
-      "lon": -1.500000
-    },
-    "person_id": "VALID-PERSON-ID-1",
-    "timestamp": "1234567890123",
-    "trip_id": "VALID-TRIP-ID-1",
-    "trip_start": "1234567890123",
-    "version": [ "v1-0" ]
+  "battery_percent": 100,
+  "battery_voltage": 4400,
+  "box_id": "VALID-DEVICE-1",
+  "connection_type": 4,
+  "location": {
+    "lat": 55.0,
+    "lon": -1.5
+  },
+  "person_id": "VALID-PERSON-ID-1",
+  "timestamp": "1234567890123",
+  "trip_id": "VALID-TRIP-ID-1",
+  "trip_start": "1234567890123",
+  "version": ["v1-0"]
 }
 ```
 
 ### Block Distance Complete
+
 The user has completed a block ~100 miles, and it is now ready to be scored. A block is made up of a minimum of 100 miles and will be scored as soon as the last trip in the block is completed. This means that if the user has driven 95 miles in their first block, then drives a 15 mile trip the final block total will be 110 miles. This is to avoid the trip appearing in multiple blocks.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-BlockDistanceCompleteTopic-Topic-${UID}
-***Trigger:*** On Block Complete
+**_Trigger:_** On Block Complete
 
 ```json
 {
@@ -162,40 +200,41 @@ The user has completed a block ~100 miles, and it is now ready to be scored. A b
   "scored": false,
   "trips": ["VALID-TRIP-ID-1", "VALID-TRIP-ID-2", "VALID-TRIP-ID-3"],
   "scores": {
-    "ADASReaction":0,
-    "DrivingDuration":0,
-    "ErraticDriving":0,
-    "LaneDepature":0,
-    "Speeding":0,
-    "Tailgating":0,
-    "TimeOfDay":0,
-    "OverallScore":0
+    "ADASReaction": 0,
+    "DrivingDuration": 0,
+    "ErraticDriving": 0,
+    "LaneDepature": 0,
+    "Speeding": 0,
+    "Tailgating": 0,
+    "TimeOfDay": 0,
+    "OverallScore": 0
   },
   "eventCounts": {
-    "ADASReaction":0,
-    "DrivingDuration":0,
-    "ErraticDriving":0,
-    "LaneDepature":0,
-    "Speeding":0,
-    "Tailgating":0,
-    "TimeOfDay":0,
-    "OverallScore":0
+    "ADASReaction": 0,
+    "DrivingDuration": 0,
+    "ErraticDriving": 0,
+    "LaneDepature": 0,
+    "Speeding": 0,
+    "Tailgating": 0,
+    "TimeOfDay": 0,
+    "OverallScore": 0
   },
   "eventDetails": {
-    "ecoEvents":null,
-    "erraticEvents":null,
-    "speedingEvents":null,
-    "timeOfDayEvents":null,
-    "durationEvents":0.0
+    "ecoEvents": null,
+    "erraticEvents": null,
+    "speedingEvents": null,
+    "timeOfDayEvents": null,
+    "durationEvents": 0.0
   }
 }
 ```
 
 ### Block Score Complete
+
 Published to once the latest completed block has been scored.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-BlockScoreCompleteTopic-Topic-${UID}
-***Trigger:*** On Block Complete
+**_Trigger:_** On Block Complete
 
 ```json
 {
@@ -256,42 +295,45 @@ Published to once the latest completed block has been scored.
 ```
 
 ### Delivery Driver Notification
+
 A trip has been flagged for delivery driver behaviour
 
-**Topic Name:** Please ask your Account Manager 
+**Topic Name:** Please ask your Account Manager
 
 ```json
 {
-   "PersonID":"VALID-PERSON-1",
-   "TripID":"VALID-TRIP-1",
+  "PersonID": "VALID-PERSON-1",
+  "TripID": "VALID-TRIP-1"
 }
 ```
 
 ### Device Allocation
+
 A Device has been allocated and shipped to a customer.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}:DeviceAllocation
 
 ```json
 {
-   "ID":"1234567890", //RoyalMail 1D ID. Can be used for tracking (will expire)
-   "Metadata":"FULFILMENT#REQUEST",
-   "AccountID":"1234567890",
-   "BoxSerial":"VALID-DEVICE-1",
-   "Expiry":0,
-   "InvoiceID":"1234567890",
-   "IsRefurb":false,
-   "PersonID":"VALID-PERSON-1",
-   "Reason": "REPLACEMENT",
-   "Reference":"POLICY-NUMBER-1",
-   "Status":"Shipped",
-   "Summary":"The sender has let us know this item will be with us soon.",
-   "UniqueID":"1234567890", // Unique package 2D ID. Can be used for tracking (won't expire)
-   "Variant":"LittleTheo-GD-0_0_1"
+  "ID": "1234567890", //RoyalMail 1D ID. Can be used for tracking (will expire)
+  "Metadata": "FULFILMENT#REQUEST",
+  "AccountID": "1234567890",
+  "BoxSerial": "VALID-DEVICE-1",
+  "Expiry": 0,
+  "InvoiceID": "1234567890",
+  "IsRefurb": false,
+  "PersonID": "VALID-PERSON-1",
+  "Reason": "REPLACEMENT",
+  "Reference": "POLICY-NUMBER-1",
+  "Status": "Shipped",
+  "Summary": "The sender has let us know this item will be with us soon.",
+  "UniqueID": "1234567890", // Unique package 2D ID. Can be used for tracking (won't expire)
+  "Variant": "LittleTheo-GD-0_0_1"
 }
 ```
 
 ### Device Connected
+
 When the device completes a trip by having been stationary for 10 minuets. It connects to the platform and sends a message before the remaining trip data.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceConnectedTopic-Topic-${UID}
@@ -303,7 +345,7 @@ When the device completes a trip by having been stationary for 10 minuets. It co
   "location": {
     "lon": -1.403091,
     "lat": 55.014623
-   },
+  },
   "timestamp": "1234567890123",
   "trip_id": "VALID-TRIP-ID-1",
   "trip_start": "1234567890123",
@@ -315,6 +357,7 @@ When the device completes a trip by having been stationary for 10 minuets. It co
 ```
 
 ### Device Disconnected
+
 The device has finished sending trip data and is switching to sleep mode.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceDisconnectedTopic-Topic-${UID}
@@ -326,7 +369,7 @@ The device has finished sending trip data and is switching to sleep mode.
   "location": {
     "lon": -1.403091,
     "lat": 55.014623
-   },
+  },
   "timestamp": "1234567890123",
   "trip_id": "VALID-TRIP-ID-1",
   "trip_start": "1234567890123",
@@ -338,6 +381,7 @@ The device has finished sending trip data and is switching to sleep mode.
 ```
 
 ### Device Installed
+
 The customer has installed their device.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceInstallationTopic-Topic-${UID}
@@ -352,11 +396,12 @@ The customer has installed their device.
   "boxID": "VALID-DEVICE-1",
   "personID": "VALID-PERSON-1",
   "timestamp": 1607346410,
-  "isFirst":true
+  "isFirst": true
 }
 ```
 
 ### Device Offline
+
 The customer has not responded to the 7 day chasers, that the device is offline.
 
 Types: `LOW_BATTERY`, `NO_INSTALL`, `TAMPER`
@@ -372,24 +417,26 @@ Types: `LOW_BATTERY`, `NO_INSTALL`, `TAMPER`
 ```
 
 ### Device Orientation
+
 Message indicating the orientation of device.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}:DeviceNotInstalledRightOrientationTopicARN
 
 ```json
 {
-  "personID":          "VALID-PERSON-ID-1",
-  "deviceID":          "VALID-DEVICE-1",
-  "timestamp":         1638895679,
-  "batteryVoltage":    13,
+  "personID": "VALID-PERSON-ID-1",
+  "deviceID": "VALID-DEVICE-1",
+  "timestamp": 1638895679,
+  "batteryVoltage": 13,
   "batteryPercentage": 70,
-  "ax":                63,
-  "ay":                -16,
-  "az":                -17,
+  "ax": 63,
+  "ay": -16,
+  "az": -17
 }
 ```
 
 ### Device Returned
+
 ThingCo has received the customers device and whether it can be re-used.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-DeviceReturnedTopic-Topic-${UID}
@@ -403,18 +450,19 @@ ThingCo has received the customers device and whether it can be re-used.
 ```
 
 ### Excessive Speeding
+
 The customer has exceeded the excessive speeding criteria. 48hrs after the initial event, the cancel field will be marked as true.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-ExcessiveSpeedingTopic-Topic-${UID}
-***Trigger:*** On Trip Complete
-***Trigger Conditions:*** Excessive speeding campaign conditions are met
+**_Trigger:_** On Trip Complete
+**_Trigger Conditions:_** Excessive speeding campaign conditions are met
 
 ```json
 {
   "boxID": "VALID-DEVICE-1",
   "personID": "VALID-PERSON-ID-1",
   "cancel": false,
-  "location":{"lat": 55.008765, "lon":-1.456833},
+  "location": { "lat": 55.008765, "lon": -1.456833 },
   "timestamp": "1597088197000",
   "eventTimestamp": "1597088197000",
   "roadName": "Hawkeys Lane",
@@ -425,11 +473,12 @@ The customer has exceeded the excessive speeding criteria. 48hrs after the initi
 ```
 
 ### Excessive Speeding Events
+
 The customer has been speeding excessively over the course of a trip
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-ExcessiveSpeedingEventsTopic-Topic-${UID}
-***Trigger:*** On Trip Complete
-***Trigger Conditions:*** At least one excessive speeding event recorded during the trip
+**_Trigger:_** On Trip Complete
+**_Trigger Conditions:_** At least one excessive speeding event recorded during the trip
 
 ```json
 {
@@ -439,7 +488,7 @@ The customer has been speeding excessively over the course of a trip
   "blockID": "VALID-BLOCK-ID",
   "events": [
     {
-      "location": {"lat":55.06653, "lon":-1.586},
+      "location": { "lat": 55.06653, "lon": -1.586 },
       "placename": "A19",
       "timestamp": "1611756533000",
       "speed": 133,
@@ -478,106 +527,96 @@ The customer has been speeding excessively over the course of a trip
 ```
 
 ### Genuine Accident
+
 Post processing using the accident sensor data to determine if we think this is a valid alert
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-AccidentGenuineCheckOutputTopic-Topic-${UID}
 
 ```json
 {
-   "AccidentID":"VALID-ACCIDENT-ID",
-   "PersonID":"VALID-PERSON-ID",
-   "Accident":{
-      "personID":"VALID-PERSON-ID",
-      "altPK":"ACCIDENT",
-      "acknowledgedSource":"VOICE",
-      "metadata":"ACCIDENT#VALID-ACCIDENT-ID",
-      "boxSerial":"VALID-BOX-ID",
-      "accidentID":"VALID-ACCIDENT-ID",
-      "acknowledgedAt":"1627466861281",
-      "location":{
-         "lon":-1.764406681060791,
-         "lat":53.8424072265625
-      },
-      "incidentReference":"VALID-ACCIDENT-ID",
-      "isConfirmed":false,
-      "isAcknowledged":true,
-      "isGenuine":false,
-      "isUnresponsive":false,
-      "placename":"Baildon",
-      "speed":0,
-      "timestamp":"1627466758000",
-      "tripID":"VALID-TRIP-ID"
-   },
-   "SensorData":[],
-   "AbsoluteSensorData":[],
-   "MovingAverage":[],
-   "Gradient":[],
-   "GradientCrashRange":[],
-   "MaxGForce":{
-      "ax":3.198974609375,
-      "ay":-3.45751953125,
-      "az":4.260009765625
-   },
-   "StandardDeviation":{
-      "ax":0.34949267579944676,
-      "ay":0.30384239284541514,
-      "az":0.24995502234744554
-   },
-   "SensorMeanStartEnd":{
-      "ax":[
-         -0.2362060546875,
-         -0.657275390625
-      ],
-      "ay":[
-         0.178955078125,
-         -0.11357421875
-      ],
-      "az":[
-         0.097216796875,
-         0.128466796875
-      ]
-   },
-   "SensorChangeInMean":{
-      "ax":false,
-      "ay":false,
-      "az":false
-   },
-   "DeltaV":2.957416519126759,
-   "Genuine":false,
-   "SpeedBump":false,
-   "Roll":false,
-   "Swerve":false,
-   "Noisy":false,
-   "Spikes":2,
-   "NumberOfAbsolutePointsOverThreshold":0,
-   "LocationInformation":{
-      "RoadType":"A-Road",
-      "Intersection":"",
-      "SlipRoad":false,
-      "SpeedCategory":[
-         21,
-         30
-      ],
-      "SpeedLimit":48,
-      "NumberofLanes":"",
-      "Urban":true
-   },
-   "ImpactDirection":{
-      "primarydirection":"ax",
-      "situation":"Rear"
-   },
-   "Tamper":false,
-   "Level":2,
-   "AlertsInLastTwoWeeks":1,
-   "Orientated":true
+  "AccidentID": "VALID-ACCIDENT-ID",
+  "PersonID": "VALID-PERSON-ID",
+  "Accident": {
+    "personID": "VALID-PERSON-ID",
+    "altPK": "ACCIDENT",
+    "acknowledgedSource": "VOICE",
+    "metadata": "ACCIDENT#VALID-ACCIDENT-ID",
+    "boxSerial": "VALID-BOX-ID",
+    "accidentID": "VALID-ACCIDENT-ID",
+    "acknowledgedAt": "1627466861281",
+    "location": {
+      "lon": -1.764406681060791,
+      "lat": 53.8424072265625
+    },
+    "incidentReference": "VALID-ACCIDENT-ID",
+    "isConfirmed": false,
+    "isAcknowledged": true,
+    "isGenuine": false,
+    "isUnresponsive": false,
+    "placename": "Baildon",
+    "speed": 0,
+    "timestamp": "1627466758000",
+    "tripID": "VALID-TRIP-ID"
+  },
+  "SensorData": [],
+  "AbsoluteSensorData": [],
+  "MovingAverage": [],
+  "Gradient": [],
+  "GradientCrashRange": [],
+  "MaxGForce": {
+    "ax": 3.198974609375,
+    "ay": -3.45751953125,
+    "az": 4.260009765625
+  },
+  "StandardDeviation": {
+    "ax": 0.34949267579944676,
+    "ay": 0.30384239284541514,
+    "az": 0.24995502234744554
+  },
+  "SensorMeanStartEnd": {
+    "ax": [-0.2362060546875, -0.657275390625],
+    "ay": [0.178955078125, -0.11357421875],
+    "az": [0.097216796875, 0.128466796875]
+  },
+  "SensorChangeInMean": {
+    "ax": false,
+    "ay": false,
+    "az": false
+  },
+  "DeltaV": 2.957416519126759,
+  "Genuine": false,
+  "SpeedBump": false,
+  "Roll": false,
+  "Swerve": false,
+  "Noisy": false,
+  "Spikes": 2,
+  "NumberOfAbsolutePointsOverThreshold": 0,
+  "LocationInformation": {
+    "RoadType": "A-Road",
+    "Intersection": "",
+    "SlipRoad": false,
+    "SpeedCategory": [21, 30],
+    "SpeedLimit": 48,
+    "NumberofLanes": "",
+    "Urban": true
+  },
+  "ImpactDirection": {
+    "primarydirection": "ax",
+    "situation": "Rear"
+  },
+  "Tamper": false,
+  "Level": 2,
+  "AlertsInLastTwoWeeks": 1,
+  "Orientated": true
 }
 ```
 
 ### Matched Points
+
 Trip points post ThingCo enrichment.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-MatchedPointsTopic-Topic-${UID}
-***Trigger:*** On Trip Complete
+**_Trigger:_** On Trip Complete
 
 ```json
 {
@@ -649,12 +688,13 @@ Trip points post ThingCo enrichment.
 ```
 
 ### NightTime Speeding
+
 The customer has surpassed the acceptable % of time over the limit and driving at night.
 `stage` indicates the number of campaigns (3 consecutive blocks) the customer has met the criteria for
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-NightSpeedingTopic-Topic-${UID}
-***Trigger:*** On Block Complete
-***Trigger Conditions:*** 3 new blocks completed and NightTime speeding campaign conditions are met
+**_Trigger:_** On Block Complete
+**_Trigger Conditions:_** 3 new blocks completed and NightTime speeding campaign conditions are met
 
 ```json
 {
@@ -666,37 +706,46 @@ The customer has surpassed the acceptable % of time over the limit and driving a
 ```
 
 ### Overnight Parking
+
 The customers policy risk address is different from the vehicles most common overnight parked location.
 `distanceFromRisk` in km
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-OvernightParkingTopic-Topic-${UID}
-***Trigger:*** On Trip Complete
-***Trigger Conditions:*** 30 days since policy start / time last run and Overnight campaign conditions are met
+**_Trigger:_** On Trip Complete
+**_Trigger Conditions:_** 30 days since policy start / time last run and Overnight campaign conditions are met
 
 ```json
 {
   "personID": "VALID-PERSON-ID-1",
   "timestamp": "1597088197000",
   "distanceFromRisk": 7.89,
-  "riskLocation": {"lat": 55.02, "lon": -1.57},
+  "riskLocation": { "lat": 55.02, "lon": -1.57 },
   "riskPostcode": "NE1 2NH",
-  "overnightLocation": {"lat": 55.17, "lon": -1.53},
+  "overnightLocation": { "lat": 55.17, "lon": -1.53 },
   "overnightPostcode": "NE12 XYZ",
   "queryFrom": "2021/03/10",
   "queryTo": "2021/03/18",
   "durationParked": "9h12m0s",
-  "results": [{"geohash":"gcvc4ck","count":6,"duration":2628,"breakdown":{"night":1080,"day":1548}}],
+  "results": [
+    {
+      "geohash": "gcvc4ck",
+      "count": 6,
+      "duration": 2628,
+      "breakdown": { "night": 1080, "day": 1548 }
+    }
+  ],
   "pctAtMostFrequent": 82.19
 }
 ```
 
 ### Persistent Speeding
+
 The customer has not improved their persistent speeding pattern over a number of blocks and should be cancelled.
 `cancel` flag will be set to true only after 12 blocks have met the criteria
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-PersistentSpeedingTopic-Topic-${UID}
-***Trigger:*** On Block Complete
-***Trigger Conditions:*** Minimum of 9 complete blocks have met the Persistent campaign criteria
+**_Trigger:_** On Block Complete
+**_Trigger Conditions:_** Minimum of 9 complete blocks have met the Persistent campaign criteria
 
 ```json
 {
@@ -709,11 +758,12 @@ The customer has not improved their persistent speeding pattern over a number of
 ```
 
 ### Persistent Speeding Events
+
 The customer has been speeding persistently over the course of a trip
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-PersistentSpeedingEventsTopic-Topic-${UID}
-***Trigger:*** On Trip Complete
-***Trigger Conditions:*** At least one persistent speeding event recorded during the trip
+**_Trigger:_** On Trip Complete
+**_Trigger Conditions:_** At least one persistent speeding event recorded during the trip
 
 ```json
 {
@@ -723,7 +773,7 @@ The customer has been speeding persistently over the course of a trip
   "blockID": "VALID-BLOCK-ID",
   "events": [
     {
-      "location": {"lat":51.01756, "lon":-4.18974},
+      "location": { "lat": 51.01756, "lon": -4.18974 },
       "placename": "A1",
       "timestamp": "1597088197000"
     }
@@ -734,33 +784,34 @@ The customer has been speeding persistently over the course of a trip
 ### Shipment Created
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-ShipmentCreated
-***Trigger:*** On shipment label creation
+**_Trigger:_** On shipment label creation
 
 ```json
 {
-   "ID":"1234567890", //RoyalMail 1D ID. Can be used for tracking
-   "Metadata":"FULFILMENT#REQUEST",
-   "AccountID":"1234567890",
-   "PersonID":"VALID-PERSON-1",
-   "Reason":"NEW_BIZ", // NEW_BIZ, COV, REPLACEMENT, WARRANTY, RETURN_PACK, CUSTOMER_RETURN
-   "Reference":"POLICY-NUMBER-1",
-   "UniqueID":"1234567890", // Unique package 2D ID. Can be used for tracking
-   // Fields below here are *Not Used* on this topic but will appear in the message payload.
-   "BoxSerial":"",
-   "Expiry":0,
-   "InvoiceID":"",
-   "IsRefurb":false,
-   "Status":"",
-   "Summary":"",
-   "Variant":""
+  "ID": "1234567890", //RoyalMail 1D ID. Can be used for tracking
+  "Metadata": "FULFILMENT#REQUEST",
+  "AccountID": "1234567890",
+  "PersonID": "VALID-PERSON-1",
+  "Reason": "NEW_BIZ", // NEW_BIZ, COV, REPLACEMENT, WARRANTY, RETURN_PACK, CUSTOMER_RETURN
+  "Reference": "POLICY-NUMBER-1",
+  "UniqueID": "1234567890", // Unique package 2D ID. Can be used for tracking
+  // Fields below here are *Not Used* on this topic but will appear in the message payload.
+  "BoxSerial": "",
+  "Expiry": 0,
+  "InvoiceID": "",
+  "IsRefurb": false,
+  "Status": "",
+  "Summary": "",
+  "Variant": ""
 }
 ```
 
 ### Standard Points
+
 Trip points after basic validation.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-StandardPointsTopic-Topic-${UID}
-***Trigger:*** On Trip Complete
+**_Trigger:_** On Trip Complete
 
 ```json
 {
@@ -838,6 +889,7 @@ Trip points after basic validation.
 ```
 
 ### Standardised Accident
+
 Initial alert summary message sent as soon as the device detects an impact.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-StandardisedAccidentTopic-Topic-${UID}
@@ -854,16 +906,17 @@ Initial alert summary message sent as soon as the device detects an impact.
   "tripStartTime": "1551442483000",
   "location": { "lat": 51.30144, "lon": -1.33661 },
   "speed": 34,
-  "altPK":"ACCIDENT",
-  "incidentReference":"VALID-ACCIDENT-ID-1",
-  "isConfirmed":false,
-  "isAcknowledged":false,
-  "isGenuine":false,
-  "isUnresponsive":false,
+  "altPK": "ACCIDENT",
+  "incidentReference": "VALID-ACCIDENT-ID-1",
+  "isConfirmed": false,
+  "isAcknowledged": false,
+  "isGenuine": false,
+  "isUnresponsive": false
 }
 ```
 
 ### Standardised Sensor
+
 The sensor data relating to an alert summary. This sent after the summary to ensure the first message is received in low signal scenarios.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-StandardisedSensorTopic-Topic-${UID}
@@ -877,7 +930,7 @@ The sensor data relating to an alert summary. This sent after the summary to ens
     {
       "t": "1588251559000",
       "s": 34,
-      "l":{"lat": 55.000, "lon":-1.500},
+      "l": { "lat": 55.0, "lon": -1.5 },
       "ax": 0.123,
       "ay": 0.456,
       "az": 1.789,
@@ -890,26 +943,28 @@ The sensor data relating to an alert summary. This sent after the summary to ens
 ```
 
 ### Tamper
+
 The device has sent a tamper notification.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-TamperTopic-Topic-${UID}
 
 ```json
 {
-    "ax": 63,
-    "ay": -16,
-    "az": -17,
-    "batteryPercentage": 49,
-    "batteryVoltage": 3777,
-    "boxID": "VALID-DEVICE-1",
-    "personID": "VALID-PERSON-ID-1",
-    "timestamp": 1618762362,
-    "isFirst": false,
-    "tamperType": "Physical",
+  "ax": 63,
+  "ay": -16,
+  "az": -17,
+  "batteryPercentage": 49,
+  "batteryVoltage": 3777,
+  "boxID": "VALID-DEVICE-1",
+  "personID": "VALID-PERSON-ID-1",
+  "timestamp": 1618762362,
+  "isFirst": false,
+  "tamperType": "Physical"
 }
 ```
 
 ### Tracking Updates
+
 Tracking and delivery updates, for new policy sales and CoV. ID & UniqueID can be used to track a shipment using [Royal Mail Tracking.](https://www.royalmail.com/track-your-item#/) However, ID is a temporary reference and is recycled. UniqueID does not expire.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}:TrackingUpdates
@@ -932,16 +987,17 @@ Tracking and delivery updates, for new policy sales and CoV. ID & UniqueID can b
 ```
 
 ### Trip Complete
+
 The device has completed a trip and all data has been received.
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripCompleteTopic-Topic-${UID}
-***Trigger:*** On Trip Complete
+**_Trigger:_** On Trip Complete
 
 ```json
 {
   "id": "VALID-TRIP-ID-1",
   "boxID": "VALID-DEVICE-ID-1",
-  "blockID":"VALID-BLOCK_ID-1",
+  "blockID": "VALID-BLOCK_ID-1",
   "personID": "VALID-PERSON-ID-1",
   "startTimestamp": "1606928671000",
   "endTimestamp": "1606935465000",
@@ -978,10 +1034,41 @@ The device has completed a trip and all data has been received.
 ```
 
 ### Trip Events Processed
+
 The latest trip has been checked for all event types
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripEventsProcessedTopic-Topic-${UID}
-***Trigger:*** On Trip Complete
+**_Trigger:_** On Trip Complete
+
+**EventsCompressed** field will contain the below schema which has been compressed with gzip and encoded as b64
+
+```json
+[
+  {
+    "Event": "SPEEDING",
+    "Count": 1,
+    "PersonID": "VALID-PERSON-ID-1",
+    "TripID": "VALID-TRIP-ID-1",
+    "TripStart": "1234567890123",
+    "BlockID": "VALID-BLOCK-ID-1",
+    "Events": [
+      {
+        "personID": "VALID-PERSON-ID",
+        "metadata": "TRIPEVENT#SPEEDING#2022/03/17@13:49:35",
+        "location": { "lat": 55.0659, "lon": -1.58205 },
+        "message": "You were speeding on the A19. The speed limit on this road is 40",
+        "eventName": "SPEEDING",
+        "severity": "MILD",
+        "messageArgs": { "limit": 40, "placename": "A19", "speed": 72 },
+        "placename": "A19",
+        "timestamp": "1647524975000",
+        "tripID": "VALID-TRIP-ID-1",
+        "blockID": "VALID-BLOCK-ID-1"
+      }
+    ]
+  }
+]
+```
 
 ```json
 {
@@ -989,55 +1076,31 @@ The latest trip has been checked for all event types
   "TripID": "VALID-TRIP-ID-1",
   "Distance": 10.1,
   "Duration": 60,
-  "StartLocation":{
-    "lon": -1.500000,
-    "lat": 55.000000
+  "StartLocation": {
+    "lon": -1.5,
+    "lat": 55.0
   },
   "StartPlacename": "Newcastle",
   "StartTimestamp": "1234567890123",
   "EndLocation": {
-    "lon": -1.500000,
-    "lat": 55.000000
+    "lon": -1.5,
+    "lat": 55.0
   },
   "EndPlacename": "Newcastle",
   "EndTimestamp": "1234567890123",
   "BlockID": "VALID-BLOCK-ID-1",
   "Count": 1,
   "IsPerfect": false,
-  "Events": [
-    {
-      "Event": "SPEEDING",
-      "Count": 1,
-      "PersonID": "VALID-PERSON-ID-1",
-      "TripID": "VALID-TRIP-ID-1",
-      "TripStart": "1234567890123",
-      "BlockID": "VALID-BLOCK-ID-1",
-      "Events": [
-        {
-          "personID": "VALID-PERSON-ID",
-          "metadata": "TRIPEVENT#SPEEDING#2022/03/17@13:49:35",
-          "location": {"lat": 55.0659, "lon": -1.58205},
-          "message": "You were speeding on the A19. The speed limit on this road is 40",
-          "eventName": "SPEEDING",
-          "severity": "MILD",
-          "messageArgs": {"limit": 40, "placename": "A19", "speed": 72},
-          "placename": "A19",
-          "timestamp": "1647524975000",
-          "tripID": "VALID-TRIP-ID-1",
-          "blockID": "VALID-BLOCK-ID-1"
-        }
-      ]
-    }
-  ],
-  "Polyline": "BASE64-ENCODED-POLYLINE",
+  "EventsCompressed": "b64EncodedString=="
 }
 ```
 
 ### Trip Points
+
 Consolidated Trip points (contains both standard points from GPS and matched points following route matching)
 
 **Topic Name:** ${AWS::Region}:${AWS::AccountId}-TripPointsTopic
-***Trigger:*** On Trip Complete
+**_Trigger:_** On Trip Complete
 
 ```json
 {
@@ -1065,21 +1128,9 @@ Consolidated Trip points (contains both standard points from GPS and matched poi
         "hdop": 0.800000011920929,
         "satelliteCount": 12,
         "sensorData": {
-          "ax": [
-            -0.010986328125,
-            -0.032958984375,
-            0.018798828125
-          ],
-          "ay": [
-            0.006591796875,
-            -0.008056640625,
-            0.0224609375
-          ],
-          "az": [
-            -0.010986328125,
-            -0.032958984375,
-            0.018798828125
-          ]
+          "ax": [-0.010986328125, -0.032958984375, 0.018798828125],
+          "ay": [0.006591796875, -0.008056640625, 0.0224609375],
+          "az": [-0.010986328125, -0.032958984375, 0.018798828125]
         }
       }
     },
@@ -1103,21 +1154,9 @@ Consolidated Trip points (contains both standard points from GPS and matched poi
         "hdop": 0.800000011920929,
         "satelliteCount": 12,
         "sensorData": {
-          "ax": [
-            -0.01171875,
-            -0.020263671875,
-            -0.002197265625
-          ],
-          "ay": [
-            0.0068359375,
-            -0.00390625,
-            0.017578125
-          ],
-          "az": [
-            -0.01171875,
-            -0.020263671875,
-            -0.002197265625
-          ]
+          "ax": [-0.01171875, -0.020263671875, -0.002197265625],
+          "ay": [0.0068359375, -0.00390625, 0.017578125],
+          "az": [-0.01171875, -0.020263671875, -0.002197265625]
         }
       }
     }
